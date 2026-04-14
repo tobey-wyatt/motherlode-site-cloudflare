@@ -1,0 +1,12 @@
+# Motherlode Advising, LLC - Robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.motherlode.biz/sitemap.xml
+
+# Disallow crawling of any admin or test pages (if added in future)
+Disallow: /admin/
+Disallow: /test/

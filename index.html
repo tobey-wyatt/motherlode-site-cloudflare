@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLWT7FY7WJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WLWT7FY7WJ');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken. Bloomington, IN-based, nationwide.">
+    <meta name="author" content="Tobey Wyatt, Motherlode Advising, LLC">
+    <title>Motherlode Advising | Founder-CEO Coaching</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.motherlode.biz/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (non-blocking) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:site_name" content="Motherlode Advising, LLC">
+    <meta property="og:title" content="Motherlode Advising | Founder-CEO Coaching">
+    <meta property="og:description" content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.motherlode.biz/">
+    <meta property="og:image" content="https://www.motherlode.biz/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Motherlode Advising — diagnostic coaching for founder-CEOs">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter/Bluesky Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Motherlode Advising | Founder-CEO Coaching">
+    <meta name="twitter:description" content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken.">
+    <meta name="twitter:image" content="https://www.motherlode.biz/images/og-image.jpg">
+
+    <style>
+/* Background Color Washes */
+.bg-hot-pink-wash {
+    background-color: #FFF0F5;
+}
+
+/* Visually hidden but accessible to screen readers and crawlers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Hero Carousel Styles */
+.hero.bg-cream .container {
+    max-width: 1000px !important;
+    width: 95% !important;
+}
+
+.hero.bg-cream {
+    min-height: auto !important;
+    padding: 280px 0 100px !important;
+}
+
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slide {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hero-slide .hero-quote {
+    font-size: clamp(26px, 3.5vw, 42px) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 16px !important;
+    font-weight: 700;
+}
+
+.hero-slide .hero-subtitle {
+    font-size: clamp(16px, 1.7vw, 20px) !important;
+    line-height: 1.5 !important;
+    opacity: 0.85;
+    margin-bottom: 0 !important;
+}
+
+.hero-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #EBDBA3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+    background-color: #0299B3;
+    transform: scale(1.3);
+}
+
+.hero-dot:hover {
+    background-color: #5E18E8;
+}
+
+@media (max-width: 768px) {
+    .hero.bg-cream .container {
+        max-width: 100% !important;
+    }
+    .hero-carousel {
+        min-height: 220px;
+    }
+}
+
+/* Service Card Adjustments */
+.service-card {
+    padding: 30px 25px !important;
+}
+
+.service-card .service-benefits {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+}
+
+/* Testimonials Carousel Styles */
+.testimonials-carousel {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+}
+
+.testimonial-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    text-align: center;
+    width: 100%;
+    min-height: 350px;
+    padding: 20px;
+}
+
+.testimonial-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.testimonial-slide .quote-icon {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.testimonial-slide .quote-icon.teal { color: #0299B3; }
+.testimonial-slide .quote-icon.purple { color: #5E18E8; }
+.testimonial-slide .quote-icon.cerulean { color: #5372FF; }
+.testimonial-slide .quote-icon.hot-pink { color: #F20358; }
+
+.testimonial-slide .testimonial-quote {
+    font-size: 20px;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 30px;
+    color: #2B2B2B;
+}
+
+.testimonial-slide .testimonial-author {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.testimonial-slide .testimonial-title {
+    font-size: 16px;
+    color: #2B2B2B;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #EBDBA3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #0299B3;
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background-color: #5E18E8;
+}
+
+/* Carousel Arrow Styling */
+.carousel-arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgba(94, 24, 232, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(94, 24, 232, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow-left {
+    left: -80px;
+}
+
+.carousel-arrow-right {
+    right: -80px;
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+    .carousel-arrow {
+        display: none;
+    }
+}
+
+/* LinkedIn Icon Styling */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #0077B5;
+    color: white;
+    border-radius: 4px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #005582;
+}
+
+/* Contact & Booking Section Styles */
+.contact-booking-section {
+    padding: 80px 0;
+    background-color: #F5F1E8;
+}
+
+.contact-booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.booking-column h3,
+.contact-column h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.booking-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #2B2B2B;
+}
+
+.contact-form-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .contact-booking-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .calendly-inline-widget {
+        height: 600px !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-hot-pink-wash {
+        background-color: rgba(242, 3, 88, 0.12) !important;
+    }
+    .contact-booking-section {
+        background-color: #1A1817 !important;
+    }
+    .contact-form-container {
+        background: #252220 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .booking-column h3,
+    .contact-column h3 {
+        color: #E8E6E1;
+    }
+    .booking-description {
+        color: #C5C0B8;
+    }
+    .diagnostic-banner {
+        background-color: rgba(235, 219, 163, 0.08) !important;
+    }
+    .diagnostic-banner a {
+        color: #A08AEF !important;
+        border-bottom-color: rgba(235, 219, 163, 0.72) !important;
+    }
+    .contact-mute-bg {
+        background-color: rgba(26, 24, 23, 0.85) !important;
+    }
+    .diagnostic-cta-section {
+        background-color: rgba(94, 24, 232, 0.18) !important;
+    }
+    .diagnostic-cta-section p,
+    .diagnostic-cta-section h3 {
+        color: #E8E6E1 !important;
+    }
+    .diagnostic-cta-section .btn-primary {
+        color: #1A1817 !important;
+    }
+    .testimonial-slide .testimonial-quote {
+        color: #C5C0B8 !important;
+    }
+    .testimonial-slide .testimonial-author {
+        color: #E8E6E1 !important;
+    }
+    .testimonial-slide .testimonial-title {
+        color: #999 !important;
+    }
+    .bg-hot-pink-wash p {
+        color: #C5C0B8 !important;
+    }
+    .bg-hot-pink-wash h2 {
+        color: #E8E6E1 !important;
+    }
+    .testimonial-slide .quote-icon.purple {
+        color: #B09EEF !important;
+    }
+    .contact-form-container {
+        filter: invert(0.88) hue-rotate(180deg) !important;
+        box-shadow: none !important;
+    }
+    .contact-form-container img {
+        filter: invert(1) hue-rotate(180deg) !important;
+    }
+    .calendly-inline-widget {
+        filter: invert(0.88) hue-rotate(180deg) !important;
+    }
+}
+
+    </style>
+
+    <!-- Structured Data / Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.motherlode.biz/#organization",
+          "name": "Motherlode Advising, LLC",
+          "url": "https://www.motherlode.biz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.motherlode.biz/images/motherlode-logo.png",
+            "width": 170,
+            "height": 50
+          },
+          "description": "Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes and need someone who sees what's actually broken.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bloomington",
+            "addressRegion": "IN",
+            "addressCountry": "US"
+          },
+          "areaServed": "US",
+          "founder": {
+            "@id": "https://www.motherlode.biz/#person"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/tobeywyatt",
+            "https://bsky.app/profile/motherlodeadvisor.bsky.social",
+            "https://www.youtube.com/@MotherlodeAdvisingLLC",
+            "https://share.google/DfqwRpQJlQeIfreEv"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.motherlode.biz/#person",
+          "name": "Tobey Wyatt",
+          "jobTitle": "Founder/CEO Advisor",
+          "description": "I help founder-CEOs find what's actually broken — so the fix finally sticks. 20+ years from scrappy bootstrapped startups to Fortune 50 giants.",
+          "image": "https://www.motherlode.biz/images/tobey-headshot.jpeg",
+          "url": "https://www.motherlode.biz/about.html",
+          "worksFor": {
+            "@id": "https://www.motherlode.biz/#organization"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/tobeywyatt",
+            "https://bsky.app/profile/motherlodeadvisor.bsky.social"
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.motherlode.biz/#oir",
+          "serviceType": "Group Coaching",
+          "name": "Operator-in-Residence (OIR)",
+          "description": "Group coaching and peer advisory for founder-CEOs who can't afford a COO but need to stop solving everything alone. Weekly sessions, real problems, real diagnosis.",
+          "provider": {
+            "@id": "https://www.motherlode.biz/#organization"
+          },
+          "areaServed": "US",
+          "category": "Business Consulting"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.motherlode.biz/#coaching",
+          "serviceType": "Strategic Coaching",
+          "name": "Strategic Coaching for Founder-CEOs",
+          "description": "Weekly 1:1 coaching for founder-CEOs making harder decisions at higher stakes — alone. Gain confidence, momentum, and clarity.",
+          "provider": {
+            "@id": "https://www.motherlode.biz/#organization"
+          },
+          "areaServed": "US",
+          "category": "Business Consulting"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.motherlode.biz/#team-coaching",
+          "serviceType": "Leadership Team Coaching",
+          "name": "Leadership Team Coaching",
+          "description": "Whole-system coaching for CEOs whose leadership teams can't seem to align — or align in meetings but not in action.",
+          "provider": {
+            "@id": "https://www.motherlode.biz/#organization"
+          },
+          "areaServed": "US",
+          "category": "Business Consulting"
+        }
+      ]
+    }
+    </script>
+
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <picture>
+                        <source srcset="images/motherlode-logo-white.png" media="(prefers-color-scheme: dark)">
+                        <img src="images/motherlode-logo.png" alt="Motherlode Advising, LLC" class="logo" width="170" height="50" fetchpriority="high">
+                    </picture>
+                </a>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#services">Services</a>
+                        <div class="dropdown-content">
+                            <a href="#oir">Operator-in-Residence</a>
+                            <a href="#coaching">Strategic Coaching</a>
+                            <a href="#team-coaching">Leadership Team Coaching</a>
+                        </div>
+                    </li>
+                    <li><a href="diagnostic.html" style="color: #5E18E8;">Diagnostic</a></li>
+                    <li><a href="media.html#webinars">Webinars</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact-booking">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="#contact-booking" class="btn btn-primary">Let's chat</a>
+
+            <button class="mobile-menu-toggle" aria-label="Open menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-close" aria-label="Close menu">&times;</button>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#services">Services</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="#oir">Operator-in-Residence</a></li>
+                        <li><a href="#coaching">Strategic Coaching</a></li>
+                        <li><a href="#team-coaching">Leadership Team Coaching</a></li>
+                        <li><a href="media.html#webinars">Webinars</a></li>
+                    </ul>
+                </li>
+                <li><a href="diagnostic.html">Diagnostic</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact-booking">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+            <section class="hero bg-cream">
+                <div class="container">
+                    <div class="hero-carousel" role="region" aria-label="Client quotes" aria-live="polite">
+                        <!-- Single H1 for SEO/AI crawlers -->
+                        <h1 class="sr-only">Coaching for Founder-CEOs Who've Tried Everything | Motherlode Advising</h1>
+
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active">
+                            <p class="hero-quote">"Everything still lands on my desk."</p>
+                            <p class="hero-subtitle">
+                                You've hired. You've delegated. It's still there.
+                            </p>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="hero-slide">
+                            <p class="hero-quote">"I hired good people and it's still not working."</p>
+                            <p class="hero-subtitle">
+                                You did the right thing. It should have worked.
+                            </p>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="hero-slide">
+                            <p class="hero-quote">"We keep solving the same problems."</p>
+                            <p class="hero-subtitle">
+                                You're not crazy. And you're not missing something obvious.
+                            </p>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="hero-slide">
+                            <p class="hero-quote">"We're profitable but I'm grinding harder than year one."</p>
+                            <p class="hero-subtitle">
+                                No one else sees it because the numbers look fine.
+                            </p>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="hero-slide">
+                            <p class="hero-quote">"Something's broken and I can't figure out what."</p>
+                            <p class="hero-subtitle">
+                                You've tried everything that should have worked.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Dots -->
+                    <div class="hero-dots" role="tablist" aria-label="Quote slides">
+                        <span class="hero-dot active" data-slide="0" role="button" tabindex="0" aria-label="Quote 1"></span>
+                        <span class="hero-dot" data-slide="1" role="button" tabindex="0" aria-label="Quote 2"></span>
+                        <span class="hero-dot" data-slide="2" role="button" tabindex="0" aria-label="Quote 3"></span>
+                        <span class="hero-dot" data-slide="3" role="button" tabindex="0" aria-label="Quote 4"></span>
+                        <span class="hero-dot" data-slide="4" role="button" tabindex="0" aria-label="Quote 5"></span>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <a href="#contact-booking" class="btn btn-primary">Let's chat</a>
+                        <a href="#services" class="btn btn-secondary">See how I work</a>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Drop this right AFTER the hero section closing </section> and BEFORE the services section -->
+        <div class="diagnostic-banner" style="background-color: #F5F1E8; text-align: center; padding: 12px 20px 28px;">
+            <a href="diagnostic.html" style="font-size: 16px; color: #5E18E8; font-weight: 600; text-decoration: none; border-bottom: 2px solid #EBDBA3; padding-bottom: 2px; transition: border-color 0.2s;">Sound familiar? Find out what's actually driving it →</a>
+        </div>
+        
+        <!-- Services Section -->
+        <section id="services" class="bg-white">
+            <div class="container">
+                <h2 class="text-center mb-60">Choose Your Level of Support</h2>
+
+                <div class="grid-3col">
+                    <!-- Service Card 1: Operator-in-Residence -->
+                    <div id="oir" class="card service-card">
+                        <div class="card-border teal"></div>
+
+                        <img src="images/oir-icon.png" alt="Operator-in-Residence: group coaching for founder-CEOs who are solving everything alone" style="width: 180px; height: 180px; margin: 0 auto 20px; display: block;" loading="lazy">
+
+                        <h3 style="font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 15px;">Operator-in-Residence</h3>
+
+                        <div class="service-price" style="font-size: 20px; font-weight: 600; margin-bottom: 20px;">$500/month</div>
+
+                        <p class="service-description">
+                            You can't afford a COO and wouldn't know what to hand them anyway. You're tired of solving everything alone — or dumping it on your partner at dinner.
+                        </p>
+
+                        <p class="service-description" style="font-size: 14px; margin-top: 10px;">
+                            Weekly group sessions with 4 other founder-CEOs. Real problems diagnosed live. Your board of advisors — not a support group.
+                        </p>
+
+                        <ul class="service-benefits">
+                            <li>Stop reinventing every wheel</li>
+                            <li>Companionship through the hard parts</li>
+                            <li>Real advice, not motivational fluff</li>
+                        </ul>
+
+                        <a href="#contact-booking" class="btn btn-primary">Yeah, I want in</a>
+                    </div>
+
+                    <!-- Service Card 2: Strategic Coaching -->
+                    <div id="coaching" class="card service-card">
+                        <div class="card-border purple"></div>
+
+                        <img src="images/strategic-coaching-icon.png" alt="Strategic coaching for founder-CEOs making high-stakes decisions alone" style="width: 180px; height: 180px; margin: 0 auto 20px; display: block;" loading="lazy">
+
+                        <h3 style="font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 15px;">Strategic Coaching</h3>
+
+                        <div class="service-price" style="font-size: 20px; font-weight: 600; margin-bottom: 20px;">$1,500/month</div>
+
+                        <p class="service-description">
+                            The decisions are getting harder, the stakes are getting higher, and you're making them alone. You don't need another hire — you need confidence, momentum, and clarity.
+                        </p>
+
+                        <p class="service-description" style="font-size: 14px; margin-top: 10px;">
+                            Weekly 1:1 sessions. Your agenda, your priorities. A thinking partner who's been in your seat — not just read about it.
+                        </p>
+
+                        <ul class="service-benefits">
+                            <li>High-level direction for the hands that execute</li>
+                            <li>Lighten the weight of the hardest calls</li>
+                            <li>Complete confidentiality</li>
+                        </ul>
+
+                        <a href="#contact-booking" class="btn btn-primary">Let's chat</a>
+                    </div>
+
+                    <!-- Service Card 3: Leadership Team Coaching -->
+                    <div id="team-coaching" class="card service-card">
+                        <div class="card-border cerulean"></div>
+
+                        <img src="images/leadership-team-icon.png" alt="Leadership team coaching for CEOs whose teams can't align" style="width: 180px; height: 180px; margin: 0 auto 20px; display: block;" loading="lazy">
+
+                        <h3 style="font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 15px;">Leadership Team Coaching</h3>
+
+                        <div class="service-price" style="font-size: 20px; font-weight: 600; margin-bottom: 20px;">$5,000/month</div>
+
+                        <p class="service-description">
+                            You hired leaders to take work off your plate. Somehow you're busier than before — and meetings feel aligned until everyone walks out the door.
+                        </p>
+
+                        <p class="service-description" style="font-size: 14px; margin-top: 10px;">
+                            CEO coaching + team observation + leader 1:1s + strategic facilitation. I see the whole system — not just your view of it.
+                        </p>
+
+                        <ul class="service-benefits">
+                            <li>Alignment that survives the meeting</li>
+                            <li>Leaders who actually take work off your plate</li>
+                            <li>Patterns visible only from outside</li>
+                        </ul>
+
+                        <a href="#contact-booking" class="btn btn-primary">I need this</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!-- Upcoming Webinars Section -->
+        <section id="webinars" class="bg-hot-pink-wash">
+            <div class="container">
+                <div style="text-align: center; padding: 60px 20px;">
+                    <h2 style="margin-bottom: 20px;">Upcoming Webinars</h2>
+                    <p style="font-size: 24px; line-height: 1.6; color: #5E18E8; max-width: 600px; margin: 0 auto 30px; font-weight: 600;">
+                        Coming Soon
+                    </p>
+                    <p style="font-size: 18px; line-height: 1.6; color: #2B2B2B; max-width: 700px; margin: 0 auto;">
+                        Live sessions on the patterns that keep founder-CEOs stuck — and how to break them. Sign up for updates.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+<!-- Compact About Section -->
+        <section id="about" class="bg-teal-wash">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto;">
+                    <!-- Headshot -->
+                    <div>
+                        <img src="images/tobey-headshot.jpeg" alt="Tobey Wyatt - coaching founder-CEOs through the problems no one else seems to get" style="width: 200px; height: 400px; border-radius: 15px; object-fit: cover; object-position: center top; box-shadow: 0 12px 12px rgba(0,0,0,0.15);" loading="lazy">
+                    </div>
+
+                    <!-- Bio -->
+                    <div>
+                        <h3 style="color: #0299B3; margin-bottom: 16px;">It shouldn't be this hard.<br>You're not wrong about that.</h3>
+                        <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                            I've spent 20+ years inside companies like yours — from scrappy bootstrapped startups to Fortune 50 giants — as CEO, COO, and Chief of Staff. I've been in your seat. I know what it feels like when the fixes don't stick and no one else seems to see the real problem.
+                        </p>
+                        <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                            I help you find what's actually broken. Then I coach you through fixing it — so it stays fixed.
+                        </p>
+                        <a href="about.html" class="btn btn-outline">To the long version</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Responsive Styling -->
+                <style>
+                    @media (max-width: 768px) {
+                        section .container > div[style*="grid-template-columns: 200px 1fr"] {
+                            grid-template-columns: 1fr !important;
+                            text-align: center;
+                            gap: 24px !important;
+                        }
+                        section .container > div[style*="grid-template-columns: 200px 1fr"] img {
+                            margin: 0 auto !important;
+                        }
+                    }
+                </style>
+            </div>
+        </section>
+
+
+<!-- Why Work With Me Section -->
+        <section class="bg-gold-wash">
+            <div class="container">
+                <h2 class="text-center" style="margin-bottom: 40px;">Why Founders Work With Me</h2>
+            </div>
+
+            <div class="grid-2col" style="gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+                <div class="container container-narrow">
+                    <div class="feature-point">
+                        <div class="feature-icon-large">
+                            <img src="images/compass-experience-icon.png" alt="Fixes weren't sticking: compass icon representing finding the real problem" style="width: 200px; height: 200px; object-fit: contain;" loading="lazy">
+                        </div>
+                        <h4>Their Fixes Weren't Sticking</h4>
+                        <p>
+                            They'd tried new hires, new tools, new processes. I help find what's actually broken underneath — so the solution addresses root cause, not surface.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container container-narrow">
+                    <div class="feature-point">
+                        <div class="feature-icon-large">
+                            <img src="images/diagnosis-stethoscope-icon.png" alt="Honoring complexity: stethoscope icon representing real diagnosis" style="width: 200px; height: 200px; object-fit: contain;" loading="lazy">
+                        </div>
+                        <h4>No One Else Seemed to Get the Complexity</h4>
+                        <p>
+                            I don't simplify your business into a 3-step framework. I help you navigate the real complexity — because that's where the real answers are.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container container-narrow">
+                    <div class="feature-point">
+                        <div class="feature-icon-large">
+                            <img src="images/ai-brain-icon.png" alt="AI-enhanced thinking partner: brain icon representing expanded capacity" style="width: 200px; height: 200px; object-fit: contain;" loading="lazy">
+                        </div>
+                        <h4>They Were Making High-Stakes Decisions Alone</h4>
+                        <p>
+                            I bring a second brain to the table — supported by AI that surfaces patterns and context a single conversation can't hold. The judgment stays human.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container container-narrow">
+                    <div class="feature-point">
+                        <div class="feature-icon-large">
+                            <img src="images/lighthouse-operator-icon.png" alt="Been in your seat: lighthouse icon representing experienced guidance" style="width: 200px; height: 200px; object-fit: contain;" loading="lazy">
+                        </div>
+                        <h4>They Needed Someone Who's Actually Done This</h4>
+                        <p>
+                            I've been CEO, COO, and Chief of Staff — from scrappy bootstrapped startups to Fortune 50 giants. I don't coach from theory. I coach from 20+ years of operating at every scale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+<!-- Testimonials Section with Carousel -->
+        <section class="bg-white">
+            <div class="container">
+                <h2 class="text-center mb-60">What Founders Say</h2>
+
+                <div class="testimonials-carousel">
+                    <!-- Previous Arrow -->
+                    <button class="carousel-arrow carousel-arrow-left" aria-label="Previous testimonial">
+                        <span>&#8249;</span>
+                    </button>
+
+                    <!-- Testimonial 1 - Zak -->
+                    <div class="testimonial-slide active">
+                        <div class="quote-icon hot-pink">"</div>
+                        <p class="testimonial-quote">
+                            Every week, Tobey helps me cut through the chaos and focus on what actually matters. She sees consequences I miss and helps me make decisions that land well across the organization.
+                        </p>
+                        <div class="testimonial-author">Zak</div>
+                        <div class="testimonial-title">Founder & CEO, Mental Telehealth</div>
+                    </div>
+
+                    <!-- Testimonial 2 - Elliot -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon cerulean">"</div>
+                        <p class="testimonial-quote">
+                            Tobey helped me see how to make our abstract creative work measurable without losing what makes it special. She translated complex operations into plain English my team could actually use. For the first time, I had clarity on systems I'd been avoiding building.
+                        </p>
+                        <div class="testimonial-author">Elliot</div>
+                        <div class="testimonial-title">Founder & CEO, Full Service Video Game Audio Agency</div>
+                    </div>
+
+                    <!-- Testimonial 3 - Keith -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon purple">"</div>
+                        <p class="testimonial-quote">
+                            As my company grew, managing everything from business development to HR became unsustainable. Motherlode helped establish the processes for efficient and sustainable business operations. THIS enabled me to focus on building great software products for our clients.
+                        </p>
+                        <div class="testimonial-author">Keith</div>
+                        <div class="testimonial-title">Founder & CEO, Boutique Software Development</div>
+                    </div>
+
+                    <!-- Testimonial 4 - Shoshanah -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon teal">"</div>
+                        <p class="testimonial-quote">
+                            Thank you for all the time and wisdom you've poured into this community. You have made us better in myriad ways – with better processes, improved communications, and a shared sense of mission. You have been a gift not only to our beautiful team as a whole, but to me personally.
+                        </p>
+                        <div class="testimonial-author">Shoshanah</div>
+                        <div class="testimonial-title">Lead Rabbi, Chicago Synagogue</div>
+                    </div>
+
+                    <!-- Next Arrow -->
+                    <button class="carousel-arrow carousel-arrow-right" aria-label="Next testimonial">
+                        <span>&#8250;</span>
+                    </button>
+
+                    <!-- Carousel Navigation Dots -->
+                    <div class="carousel-dots" role="tablist" aria-label="Testimonial slides">
+                        <span class="carousel-dot active" data-slide="0" role="button" tabindex="0" aria-label="Testimonial 1"></span>
+                        <span class="carousel-dot" data-slide="1" role="button" tabindex="0" aria-label="Testimonial 2"></span>
+                        <span class="carousel-dot" data-slide="2" role="button" tabindex="0" aria-label="Testimonial 3"></span>
+                        <span class="carousel-dot" data-slide="3" role="button" tabindex="0" aria-label="Testimonial 4"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="diagnostic-cta-section" style="background-color: #F7F0FD; padding: 48px 0;">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <p style="font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #5E18E8; margin-bottom: 12px;">Free Diagnostic Tool</p>
+                <h3 style="font-size: 28px; font-weight: 700; color: #000; margin-bottom: 16px; line-height: 1.2;">Not sure what's actually broken?</h3>
+                <p style="font-size: 18px; color: #2B2B2B; line-height: 1.6; max-width: 560px; margin: 0 auto 28px;">
+                    The Operator Trap Diagnostic maps your symptoms to the pattern keeping you stuck. 10 questions. 3 minutes. No email required.
+                </p>
+                <a href="diagnostic.html" class="btn btn-primary" style="font-size: 16px;">Take the Diagnostic</a>
+            </div>
+        </section>
+
+        <!-- Contact & Booking Section -->
+        <section id="contact-booking" class="contact-booking-section" style="background-color: #F5F1E8;">
+            <div class="container" style="max-width: 600px; margin: 0 auto 60px;">
+                <h2 class="text-center mb-60">Let's Chat</h2>
+            </div>
+
+            <div class="container">
+                <div class="contact-booking-grid">
+                    <!-- Left Column: Calendly Booking -->
+                    <div class="booking-column">
+                        <div class="contact-mute-bg" style="background-color: rgba(245, 241, 232, 0.85); padding: 20px; border-radius: 8px; margin-bottom: 0; position: relative; z-index: 5;">
+                            <h3 style="margin-bottom: 12px;">Book 30 Minutes</h3>
+                            <p class="booking-description" style="margin-bottom: 0;">
+                                No pitch, no pressure. Tell me what's going on and we'll figure out if I can help.
+
+                            </p>
+                        </div>
+
+                        <!-- Calendly inline widget begin -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/motherlodebiz/website-booking?hide_event_type_details=1" style="min-width:320px;height:700px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <!-- Calendly inline widget end -->
+                    </div>
+
+                    <!-- Right Column: Contact Form -->
+                    <div class="contact-column">
+                        <div class="contact-mute-bg" style="background-color: rgba(245, 241, 232, 0.85); padding: 20px; border-radius: 8px; margin-bottom: 0; position: relative; z-index: 5;">
+                            <h3 style="margin-bottom: 12px;">Send Me a Note</h3>
+                            <p class="booking-description" style="margin-bottom: 0;">
+                                Not ready to talk yet? Drop me a message and I'll respond within 48 hours.
+
+                            </p>
+                        </div>
+
+                        <div class="contact-form-container">
+                            <div style="width:100%;height:500px;" data-fillout-id="6USXmQiGyKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+                            <script src="https://server.fillout.com/embed/v1/"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/motherlode-logo-white.png" alt="Motherlode Advising, LLC - Coaching for founder-CEOs" class="footer-logo" loading="lazy">
+                    <p style="color: #E0E0E0; margin: 15px 0; font-size: 14px; text-align: center;">Bloomington, IN | Serving Nationwide</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/tobeywyatt" class="social-icon" aria-label="LinkedIn" title="Visit Tobey on LinkedIn" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://bsky.app/profile/motherlodeadvisor.bsky.social" class="social-icon" aria-label="Bluesky" title="Follow on Bluesky" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@MotherlodeAdvisingLLC" class="social-icon" aria-label="YouTube" title="Subscribe on YouTube" target="_blank" rel="noopener">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://share.google/DfqwRpQJlQeIfreEv" class="social-icon" aria-label="Google Business Profile" title="Review on Google" target="_blank" rel="noopener">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="https://www.alignable.com/chicago-il/motherlode-advising-llc?user=16857724" class="social-icon" aria-label="Alignable" title="Connect on Alignable" target="_blank" rel="noopener">
+                            <img src="images/alignable-logo.png" alt="Alignable" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links-grid">
+                        <ul class="footer-links">
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="index.html#contact-booking">Contact</a></li>
+                        </ul>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="media.html">Media</a></li>
+                            <li><a href="diagnostic.html">Diagnostic</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Motherlode Advising, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA (visible only on mobile) -->
+    <div class="sticky-mobile-cta">
+        <a href="#contact-booking" class="btn btn-primary">Let's chat</a>
+    </div>
+
+
+<!-- Carousel JavaScript (Hero + Testimonials) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ===== HERO CAROUSEL =====
+            (function() {
+                var current = 0;
+                var timer = null;
+                var slides = document.querySelectorAll('.hero-slide');
+                var dots = document.querySelectorAll('.hero-dot');
+                var total = slides.length;
+                if (!total) return;
+
+                function show(index) {
+                    for (var i = 0; i < slides.length; i++) {
+                        slides[i].classList.remove('active');
+                        dots[i].classList.remove('active');
+                    }
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+                }
+
+                function next() {
+                    current = (current + 1) % total;
+                    show(current);
+                }
+
+                function start() {
+                    if (timer) clearInterval(timer);
+                    timer = setInterval(next, 5000);
+                }
+
+                for (var i = 0; i < dots.length; i++) {
+                    (function(idx) {
+                        dots[idx].addEventListener('click', function() {
+                            current = idx;
+                            show(current);
+                            start();
+                        });
+                    })(i);
+                }
+
+                start();
+            })();
+
+            // ===== TESTIMONIALS CAROUSEL =====
+            (function() {
+                let current = 0;
+                let timer = null;
+                const slides = document.querySelectorAll('.testimonial-slide');
+                const dots = document.querySelectorAll('.carousel-dot');
+                const total = slides.length;
+                if (!total) return;
+
+                function show(index) {
+                    slides.forEach(s => s.classList.remove('active'));
+                    dots.forEach(d => d.classList.remove('active'));
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+                }
+
+                function next() {
+                    current = (current + 1) % total;
+                    show(current);
+                }
+
+                function prev() {
+                    current = (current - 1 + total) % total;
+                    show(current);
+                }
+
+                function start() {
+                    if (timer) clearInterval(timer);
+                    timer = setInterval(next, 7000);
+                }
+
+                function stop() {
+                    if (timer) { clearInterval(timer); timer = null; }
+                }
+
+                var leftArrow = document.querySelector('.carousel-arrow-left');
+                var rightArrow = document.querySelector('.carousel-arrow-right');
+
+                if (leftArrow) {
+                    leftArrow.addEventListener('click', function() {
+                        prev(); stop(); start();
+                    });
+                }
+                if (rightArrow) {
+                    rightArrow.addEventListener('click', function() {
+                        next(); stop(); start();
+                    });
+                }
+
+                dots.forEach(function(dot, i) {
+                    dot.addEventListener('click', function() {
+                        current = i;
+                        show(current);
+                        stop();
+                        start();
+                    });
+                });
+
+                var carouselEl = document.querySelector('.testimonials-carousel');
+                if (carouselEl) {
+                    carouselEl.addEventListener('mouseenter', stop);
+                    carouselEl.addEventListener('mouseleave', start);
+                }
+
+                start();
+            })();
+
+        });
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/particles.js" defer></script>
+    <script src="js/main.js"></script>
+
+    <!-- External Tracking -->
+    <script async
+      src="https://link.msgsndr.com/js/external-tracking.js"
+      data-tracking-id="tk_1d8be305b8a24a8486f3cc7c92c1f0aa">
+    </script>
+</body>
+</html>

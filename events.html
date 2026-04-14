@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLWT7FY7WJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WLWT7FY7WJ');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upcoming events hosted, facilitated, and spoken at by Tobey Wyatt of Motherlode Advising. Networking events, workshops, and speaking engagements for founder-CEOs.">
+    <meta name="author" content="Tobey Wyatt, Motherlode Advising, LLC">
+    <title>Events | Motherlode Advising - Networking & Workshops for Founder-CEOs</title>
+    
+    <link rel="canonical" href="https://www.motherlode.biz/events.html">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (non-blocking) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <meta property="og:site_name" content="Motherlode Advising, LLC">
+    <meta property="og:title" content="Events | Networking & Workshops for Founder-CEOs">
+    <meta property="og:description" content="Join Tobey Wyatt at upcoming events for founder-CEOs. Roundtables, workshops, and speaking engagements.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.motherlode.biz/events.html">
+    <meta property="og:image" content="https://www.motherlode.biz/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Motherlode Advising — events and workshops for founder-CEOs">
+    <meta property="og:locale" content="en_US">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Events | Motherlode Advising">
+    <meta name="twitter:description" content="Upcoming events for founder-CEOs: roundtables, workshops, and speaking engagements with Tobey Wyatt.">
+    <meta name="twitter:image" content="https://www.motherlode.biz/images/og-image.jpg">
+
+    <style>
+        .events-hero {
+            padding: 100px 0 30px;
+            text-align: center;
+            background: var(--cream-bg);
+        }
+
+        .events-hero h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .events-hero p {
+            font-size: 17px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--dark-gray-text);
+        }
+
+        .events-section {
+            padding: 60px 0;
+        }
+
+        .featured-section {
+            padding: 0 0 20px 0;
+            margin-top: -20px;
+        }
+
+        .featured-event {
+            background: linear-gradient(135deg, var(--cerulean-wash) 0%, #FFFFFF 100%);
+            border: 2px solid var(--cerulean);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-event::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--cerulean);
+        }
+
+        .featured-event-content {
+            padding: 20px 30px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .featured-left {
+            text-align: left;
+        }
+
+        .featured-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-type-badge.teal { background: var(--teal); }
+        .event-type-badge.purple { background: var(--purple); }
+        .event-type-badge.hot-pink { background: var(--hot-pink); }
+        .event-type-badge.cerulean { background: var(--cerulean); }
+
+        .featured-event-content .event-type-badge {
+            margin-bottom: 6px;
+        }
+
+        .featured-event-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--cerulean);
+            margin-bottom: 6px;
+        }
+
+        .featured-event-description {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--dark-gray-text);
+            margin: 0;
+        }
+
+        .featured-event-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+
+        .featured-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: var(--dark-gray-text);
+        }
+
+        .featured-detail i {
+            color: var(--cerulean);
+            font-size: 18px;
+        }
+
+        .calendar-section {
+            margin-bottom: 30px;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            background: #FFFFFF;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: 2px solid var(--dark-gray-text);
+            border-radius: 8px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-gray-text);
+            transition: all 0.2s ease;
+        }
+
+        .calendar-nav:hover:not(:disabled) {
+            background: var(--gold-primary);
+            border-color: var(--gold-primary);
+            color: var(--black-text);
+        }
+
+        .calendar-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .calendar-nav.today-btn {
+            background: var(--gold-primary);
+            border-color: var(--gold-primary);
+            color: var(--black-text);
+            font-weight: 600;
+        }
+
+        .calendar-nav.today-btn:hover {
+            background: #D4C48A;
+            border-color: #D4C48A;
+        }
+
+        .calendar-nav.today-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .calendar-date-range {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--black-text);
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .calendar-days-compact {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            padding: 0 10px;
+        }
+
+        .calendar-day-compact {
+            background: #F8F8F8;
+            border-radius: 8px;
+            padding: 8px 6px;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.2s ease;
+        }
+
+        .calendar-day-compact.today {
+            background: rgba(235, 219, 163, 0.4);
+            border: 2px solid var(--gold-primary);
+        }
+
+        .calendar-day-compact.past {
+            opacity: 0.5;
+        }
+
+        .calendar-day-compact.friday {
+            background: rgba(83, 114, 255, 0.08);
+        }
+
+        .calendar-day-compact.friday.today {
+            background: rgba(235, 219, 163, 0.4);
+        }
+
+        .day-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .day-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--dark-gray-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .day-num {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--black-text);
+        }
+
+        .day-events-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
+        }
+
+        .event-pill {
+            padding: 4px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .event-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-pill-text {
+            font-size: 10px;
+            font-weight: 600;
+            color: #FFFFFF;
+            display: block;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
+
+        .event-pill {
+            max-width: 140px;
+        }
+
+        .event-pill.office-hours { background: #5372FF; }
+        .event-pill.facilitating { background: #0299B3; }
+        .event-pill.hosting { background: #F20358; }
+        .event-pill.speaking { background: #5E18E8; }
+        .event-pill.external { background: #6B7280; }
+
+        .event-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .event-details-section h2 {
+            font-size: 28px;
+            margin-bottom: 0;
+            color: var(--black-text);
+        }
+
+        .event-filters {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark-gray-text);
+        }
+
+        .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .location-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .location-tag.virtual {
+            background: #EDE9FE;
+            color: #5E18E8;
+        }
+
+        .location-tag.in-person {
+            background: #D1FAE5;
+            color: #047857;
+        }
+
+        .host-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .host-badge.motherlode {
+            background: #EBDBA3;
+            color: #2B2B2B;
+        }
+
+        .host-badge.external {
+            background: #6B7280;
+            color: white;
+        }
+
+        .event-details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .event-detail-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .event-detail-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-detail-card.highlight {
+            animation: highlightPulse 1.5s ease;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+            50% { box-shadow: 0 0 0 4px rgba(83, 114, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.12); }
+        }
+
+        .event-detail-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+        }
+
+        .event-detail-card.office-hours::before { background: #5372FF; }
+        .event-detail-card.facilitating::before { background: #0299B3; }
+        .event-detail-card.hosting::before { background: #F20358; }
+        .event-detail-card.speaking::before { background: #5E18E8; }
+        .event-detail-card.external::before { background: #6B7280; }
+
+        .external-badge {
+            display: inline-block;
+            background: #6B7280;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .external-event {
+            background: linear-gradient(to right, #FAFAFA, #FFFFFF);
+        }
+
+        .event-detail-content {
+            padding: 28px 28px 28px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .event-detail-info h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--black-text);
+            margin-bottom: 12px;
+        }
+
+        .event-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--dark-gray-text);
+        }
+
+        .event-meta-item i {
+            color: var(--teal);
+            width: 16px;
+        }
+
+        .event-detail-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-gray-text);
+        }
+
+        .event-detail-action {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            background: #6B7280;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #4B5563;
+        }
+
+        .no-events-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .no-events-message h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .no-events-message p {
+            font-size: 18px;
+            color: var(--dark-gray-text);
+            margin-bottom: 24px;
+        }
+
+        .events-error {
+            text-align: center;
+            padding: 40px;
+            color: var(--hot-pink);
+            font-size: 18px;
+        }
+
+        .mobile-event-list {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .events-hero {
+                padding: 120px 0 40px;
+            }
+
+            .events-hero h1 {
+                font-size: 36px;
+            }
+
+            .event-details-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .event-filters {
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            .filter-group select {
+                flex: 1;
+                width: 100%;
+            }
+
+            .location-tag {
+                display: block;
+                margin-left: 0;
+                margin-top: 8px;
+                width: fit-content;
+            }
+
+            .featured-event-content {
+                padding: 24px 20px;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .featured-left {
+                text-align: center;
+            }
+
+            .featured-right {
+                align-items: center;
+            }
+
+            .featured-event-title {
+                font-size: 22px;
+            }
+
+            .featured-event-description {
+                font-size: 15px;
+            }
+
+            .featured-event-details {
+                align-items: center;
+            }
+
+            .calendar-section {
+                display: none;
+            }
+
+            .mobile-event-list {
+                display: block;
+                margin-bottom: 40px;
+            }
+
+            .mobile-week-header {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--dark-gray-text);
+                margin-bottom: 16px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid var(--gold);
+            }
+
+            .mobile-event-item {
+                background: #FFFFFF;
+                border-radius: 10px;
+                padding: 16px;
+                margin-bottom: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+
+            .mobile-event-item:hover {
+                transform: translateX(4px);
+            }
+
+            .mobile-event-color {
+                width: 4px;
+                border-radius: 2px;
+                align-self: stretch;
+            }
+
+            .mobile-event-color.office-hours { background: #5372FF; }
+            .mobile-event-color.facilitating { background: #0299B3; }
+            .mobile-event-color.hosting { background: #F20358; }
+            .mobile-event-color.speaking { background: #5E18E8; }
+            .mobile-event-color.external { background: #6B7280; }
+
+            .mobile-host-badge {
+                display: inline-block;
+                font-size: 9px;
+                font-weight: 600;
+                padding: 2px 5px;
+                border-radius: 3px;
+                margin-left: 5px;
+                vertical-align: middle;
+                text-transform: uppercase;
+            }
+
+            .mobile-host-badge.motherlode {
+                background: #EBDBA3;
+                color: #2B2B2B;
+            }
+
+            .mobile-host-badge.external {
+                background: #6B7280;
+                color: white;
+            }
+
+            .mobile-event-info {
+                flex: 1;
+            }
+
+            .mobile-event-title {
+                font-weight: 600;
+                color: var(--black-text);
+                margin-bottom: 4px;
+            }
+
+            .mobile-event-datetime {
+                font-size: 13px;
+                color: var(--dark-gray-text);
+            }
+
+            .event-detail-content {
+                grid-template-columns: 1fr;
+                padding: 20px 20px 20px 28px;
+            }
+
+            .event-detail-action {
+                width: 100%;
+            }
+
+            .event-detail-action .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .event-detail-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .calendar-section {
+                background: #252220;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+            .calendar-day-compact {
+                background: #2A2725;
+            }
+            .calendar-day-compact.today {
+                background: rgba(235, 219, 163, 0.2);
+            }
+            .calendar-day-compact.friday {
+                background: rgba(83, 114, 255, 0.1);
+            }
+            .calendar-day-compact.friday.today {
+                background: rgba(235, 219, 163, 0.2);
+            }
+            .featured-event {
+                background: transparent;
+            }
+            .event-detail-card {
+                background: transparent;
+                box-shadow: none;
+            }
+            .event-detail-card:hover {
+                box-shadow: none;
+            }
+            .external-event {
+                background: transparent;
+            }
+            .no-events-message {
+                background: transparent;
+                box-shadow: none;
+            }
+            .filter-group select {
+                background: #2A2725;
+                border-color: #3A3633;
+                color: var(--black-text);
+            }
+            .location-tag.virtual {
+                background: rgba(94, 24, 232, 0.15);
+                color: #B09EEF;
+            }
+            .location-tag.in-person {
+                background: rgba(4, 120, 87, 0.15);
+                color: #4ADE80;
+            }
+            .calendar-nav.today-btn {
+                color: #1A1817 !important;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) and (max-width: 768px) {
+            .mobile-event-item {
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.motherlode.biz/#organization",
+          "name": "Motherlode Advising, LLC",
+          "url": "https://www.motherlode.biz"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.motherlode.biz/events.html",
+          "name": "Events | Motherlode Advising",
+          "description": "Upcoming events hosted, facilitated, and spoken at by Tobey Wyatt for founder-CEOs.",
+          "url": "https://www.motherlode.biz/events.html",
+          "isPartOf": {
+            "@id": "https://www.motherlode.biz/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <canvas id="particles-canvas"></canvas>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <picture>
+                        <source srcset="images/motherlode-logo-white.png" media="(prefers-color-scheme: dark)">
+                        <img src="images/motherlode-logo.png" alt="Motherlode Advising, LLC" class="logo" width="170" height="50" fetchpriority="high">
+                    </picture>
+                </a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="index.html#services">Services</a>
+                        <div class="dropdown-content">
+                            <a href="index.html#oir">Operator-in-Residence</a>
+                            <a href="index.html#coaching">Strategic Coaching</a>
+                            <a href="index.html#team-coaching">Leadership Team Coaching</a>
+                        </div>
+                    </li>
+                    <li><a href="diagnostic.html" style="color: #5E18E8;">Diagnostic</a></li>
+                    <li><a href="media.html#webinars">Webinars</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#contact-booking">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="index.html#contact-booking" class="btn btn-primary">Let's chat</a>
+            
+            <button class="mobile-menu-toggle" aria-label="Open menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <button class="mobile-close" aria-label="Close menu">&times;</button>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html#services">Services</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="index.html#oir">Operator-in-Residence</a></li>
+                        <li><a href="index.html#coaching">Strategic Coaching</a></li>
+                        <li><a href="index.html#team-coaching">Leadership Team Coaching</a></li>
+                        <li><a href="media.html#webinars">Webinars</a></li>
+                    </ul>
+                </li>
+                <li><a href="diagnostic.html">Diagnostic</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact-booking">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main id="main-content">
+        <section class="events-hero">
+            <div class="container">
+                <h1>Events</h1>
+                <p>Join me at upcoming networking events, workshops, and speaking engagements.</p>
+            </div>
+        </section>
+
+        <section class="events-section bg-white">
+            <div class="container">
+                <div id="calendar-section" class="calendar-section">
+                    <div class="calendar-header">
+                        <button id="prev-week" class="calendar-nav" aria-label="Previous week">
+                            <i class="fas fa-chevron-left"></i> Prev
+                        </button>
+                        <button id="today-btn" class="calendar-nav today-btn" aria-label="Go to today">
+                            Today
+                        </button>
+                        <span id="calendar-date-range" class="calendar-date-range"></span>
+                        <button id="next-week" class="calendar-nav" aria-label="Next week">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div id="calendar-days" class="calendar-days-compact"></div>
+                </div>
+
+                <div id="mobile-event-list" class="mobile-event-list"></div>
+
+                <div class="event-details-section">
+                    <div class="event-details-header">
+                        <h2>Event Details</h2>
+                        <div class="event-filters">
+                            <div class="filter-group">
+                                <label for="host-filter">Host:</label>
+                                <select id="host-filter">
+                                    <option value="all">All Hosts</option>
+                                    <option value="motherlode">Motherlode</option>
+                                    <option value="always-be-connecting">ABC</option>
+                                    <option value="windy-city-business-network">WCBN</option>
+                                    <option value="alignable">Alignable</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="location-filter">Location:</label>
+                                <select id="location-filter">
+                                    <option value="all">All Locations</option>
+                                    <option value="virtual">Virtual</option>
+                                    <option value="chicago">Chicago, IL</option>
+                                    <option value="chicagoland">Chicagoland Suburbs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="no-events-message" class="no-events-message" style="display: none;">
+                        <h3>No Upcoming Events</h3>
+                        <p>Check back soon for new events.</p>
+                    </div>
+                    <div id="event-details-list" class="event-details-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-teal-wash" style="padding: 80px 0; text-align: center;">
+            <div class="container">
+                <h2 style="margin-bottom: 20px;">Want to Book Me for Your Event?</h2>
+                <p style="font-size: 20px; max-width: 700px; margin: 0 auto 30px; color: var(--dark-gray-text);">
+                    I speak on operational foundations, scaling companies, and the founder-to-CEO transition. Available for keynotes, panels, and workshops.
+                </p>
+                <a href="index.html#contact-booking" class="btn btn-primary">Let's chat</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/motherlode-logo-white.png" alt="Motherlode Advising, LLC - Fractional COO for founder-CEOs" class="footer-logo" loading="lazy">
+                    <p style="color: #E0E0E0; margin: 15px 0; font-size: 14px; text-align: center;">Chicago, IL | Serving Nationwide</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/tobeywyatt" class="social-icon" aria-label="LinkedIn" title="Visit Tobey on LinkedIn" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://bsky.app/profile/motherlodeadvisor.bsky.social" class="social-icon" aria-label="Bluesky" title="Follow on Bluesky" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@MotherlodeAdvisingLLC" class="social-icon" aria-label="YouTube" title="Subscribe on YouTube" target="_blank" rel="noopener">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://share.google/DfqwRpQJlQeIfreEv" class="social-icon" aria-label="Google Business Profile" title="Review on Google" target="_blank" rel="noopener">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="https://www.alignable.com/chicago-il/motherlode-advising-llc?user=16857724" class="social-icon" aria-label="Alignable" title="Connect on Alignable" target="_blank" rel="noopener">
+                            <img src="images/alignable-logo.png" alt="Alignable" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links-grid">
+                        <ul class="footer-links">
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="index.html#contact-booking">Contact</a></li>
+                        </ul>
+                        <ul class="footer-links">
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="media.html">Media</a></li>
+                            <li><a href="diagnostic.html">Diagnostic</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Motherlode Advising, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/particles.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/events.js" defer></script>
+    <script src="https://www.msgsndr.com/js/form_embed.js" data-tracking-id="tk_1d8be305b8a24a8486f3cc7c92c1f0aa"></script>
+</body>
+</html>
