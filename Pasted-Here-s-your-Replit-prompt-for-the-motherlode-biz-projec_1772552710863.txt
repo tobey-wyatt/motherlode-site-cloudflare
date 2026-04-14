@@ -1,0 +1,33 @@
+Here's your Replit prompt for the motherlode.biz project:
+
+Fix Google Search Console indexing issues: 404 redirects and canonical tag.
+Google Search Console is reporting 10 broken URLs (404s) and a canonical issue. Here's exactly what needs to happen:
+1. Add 301 redirects for old URLs that have new equivalents
+These old URLs need to redirect to their current versions:
+
+/privacy → /privacy.html
+/terms → /terms.html
+
+2. Add 301 redirects (or 410 Gone responses) for dead URLs that no longer exist
+These pages are permanently gone. Return a 410 Gone HTTP status so Google knows to stop crawling them:
+
+/diagnostic
+/booking-calendar/monthly-ceo-coachvisory-session
+/service-page/growth-collective
+/news.php?newsID=4 (and any variation with query params)
+/pdfs/ASU-Larry-0201.pdf
+
+A 410 is better than a 404 here because it explicitly tells Google "this page is intentionally gone, stop checking."
+3. Fix the canonical issue for index.html
+Google is seeing https://www.motherlode.biz/index.html as a separate page from https://www.motherlode.biz/. Fix this by doing BOTH:
+
+Add a redirect: /index.html → / (301 redirect)
+Make sure the homepage has a canonical tag in the <head>: <link rel="canonical" href="https://www.motherlode.biz/" />
+
+4. Keep the noindex tags on privacy.html and terms.html
+These are intentionally excluded from search. Do NOT remove the noindex tags. No changes needed here — just confirming so you don't "fix" something that isn't broken.
+5. The HTTP → HTTPS redirects are working correctly
+http://motherlode.biz/ and http://www.motherlode.biz/ already redirect to HTTPS. No changes needed.
+Summary of where to implement:
+All redirects and 410 responses should be handled in server.py (or wherever your route handling lives). Add them before your static file serving so they catch these URLs before anything else tries to handle them. Do not create actual HTML pages for the dead URLs — just return the appropriate status codes.
+After making changes, test each URL to confirm the correct status code is returned.

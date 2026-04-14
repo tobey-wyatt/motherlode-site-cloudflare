@@ -1,0 +1,91 @@
+// --- Pattern cards ---
+      topKeys.forEach(function(key, i) {
+        var p = OTD_PATTERNS[key];
+        var pctOfTotal = Math.round((scores[key] / totalPoints) * 100);
+        var signal = otdGetSignalStrength(pctOfTotal);
+        var rankLabel = i === 0 ? 'YOUR PRIMARY PATTERN' : 'YOUR SECONDARY PATTERN';
+        var accentColor = i === 0 ? TEAL : PURPLE;
+        var descLines = getLines(p.description, contentW - 20, 9.5);
+        var triedLines = getLines(p.triedFirst, contentW - 20, 9.5);
+        var underLines = getLines(p.underneath, contentW - 20, 9.5);
+        var watchLines = p.watchFor ? getLines(p.watchFor, contentW - 28, 9) : [];
+        var cardContentH =
+          7 + 6 + 7 + 5 +
+          4 + (descLines.length * 4.2) + 3 +
+          4 + (triedLines.length * 4.2) + 3 +
+          4 + (underLines.length * 4.2) + 2 +
+          (watchLines.length > 0 ? 4 + watchLines.length * 4 + 10 : 0) + 6;
+        checkPage(cardContentH + 10);
+        doc.setFillColor.apply(doc, WHITE);
+        doc.roundedRect(marginL, y, contentW, cardContentH, 3, 3, 'F');
+        doc.setFillColor.apply(doc, accentColor);
+        doc.rect(marginL, y, 2, cardContentH, 'F');
+        var cx = marginL + 10, cy = y + 7, textW = contentW - 20;
+        doc.setTextColor.apply(doc, accentColor);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8);
+        doc.text(rankLabel, cx, cy);
+        cy += 6;
+        doc.setTextColor.apply(doc, [0, 0, 0]);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        doc.text(p.name, cx, cy);
+        cy += 7;
+        var sigRGB = signal.color === '#F20358' ? HOT_PINK : signal.color === '#5372FF' ? CERULEAN : GOLD;
+        doc.setTextColor.apply(doc, sigRGB);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.text(signal.label.toUpperCase(), cx, cy);
+        doc.setTextColor.apply(doc, LIGHT_GRAY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.text('  —  ' + signal.desc, cx + doc.getTextWidth(signal.label.toUpperCase()), cy);
+        cy += 5;
+        doc.setTextColor.apply(doc, LIGHT_GRAY);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7.5);
+        doc.text('WHAT YOUR SYMPTOMS POINT TO', cx, cy);
+        cy += 4;
+        doc.setTextColor.apply(doc, DARK_GRAY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.text(descLines, cx, cy, { lineHeightFactor: 1.3 });
+        cy += descLines.length * 4.2 + 3;
+        doc.setTextColor.apply(doc, LIGHT_GRAY);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7.5);
+        doc.text('WHAT MOST FOUNDERS TRY FIRST', cx, cy);
+        cy += 4;
+        doc.setTextColor.apply(doc, DARK_GRAY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.text(triedLines, cx, cy, { lineHeightFactor: 1.3 });
+        cy += triedLines.length * 4.2 + 3;
+        doc.setTextColor.apply(doc, LIGHT_GRAY);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7.5);
+        doc.text('WHAT\u2019S ACTUALLY UNDERNEATH', cx, cy);
+        cy += 4;
+        doc.setTextColor.apply(doc, DARK_GRAY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9.5);
+        doc.text(underLines, cx, cy, { lineHeightFactor: 1.3 });
+        cy += underLines.length * 4.2 + 2;
+        if (watchLines.length > 0) {
+          cy += 2;
+          var wfH = watchLines.length * 4 + 8;
+          doc.setFillColor.apply(doc, WARM_BG);
+          doc.roundedRect(cx, cy, textW, wfH, 1.5, 1.5, 'F');
+          doc.setFillColor.apply(doc, GOLD);
+          doc.rect(cx, cy, 1.2, wfH, 'F');
+          doc.setTextColor(92, 80, 48);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(7);
+          doc.text('WORTH WATCHING', cx + 5, cy + 4);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(9);
+          doc.text(watchLines, cx + 5, cy + 8.5);
+          cy += wfH + 2;
+        }
+        y += cardContentH + 5;
+      });

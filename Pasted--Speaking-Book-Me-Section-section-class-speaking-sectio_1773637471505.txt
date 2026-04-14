@@ -1,0 +1,69 @@
+<!-- Speaking / Book Me Section -->
+        <section class="speaking-section" id="book-tobey">
+            <div class="container">
+                <div class="speaking-content">
+                    <div>
+                        <h2>Book Tobey for Your Podcast or Event</h2>
+                        <p>Your audience is full of founders who can't figure out why they're still grinding. Revenue is up. The team is in place. And everything still lands on their desk. Their fixes work for a few months, then break. They're starting to wonder if they're the problem.</p>
+                        <p>They're not. They're too close to see what is.</p>
+                        <p>Tobey Wyatt coaches founder-CEOs through the shift from operator to diagnostic thinker. Her talks are the first time most founders in the room hear someone describe their Tuesday and realize they're not alone in it.</p>
+                        
+                        <p style="margin-top: var(--space-md); font-size: 0.95rem; opacity: 0.7;">
+                            <strong>Your audience walks away with:</strong>
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 var(--space-sm) 0;">
+                            <li style="padding: 4px 0; font-size: 0.95rem; opacity: 0.8;">✦ The relief of finally hearing their problem named accurately</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem; opacity: 0.8;">✦ The difference between what's on fire and what's actually broken</li>
+                            <li style="padding: 4px 0; font-size: 0.95rem; opacity: 0.8;">✦ A diagnostic instinct they can use the next morning, not just the next quarter</li>
+                        </ul>
+                        
+                        <p style="font-size: 0.9rem; opacity: 0.6; margin-top: var(--space-md);">Keynotes · Breakout Sessions · Panels · Workshops · Podcasts<br>Custom topics and workshop formats available.</p>
+                        
+                        <a href="index.html#contact-booking" class="cta-button">
+                            Book Tobey
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <ul class="topics-list">
+                            <li>
+                                <div class="topic-icon"></div>
+                                <div class="topic-content">
+                                    <strong>The Operator Trap</strong>
+                                    <span>Why the skills that built the business are the same ones keeping the founder stuck inside it</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="topic-icon"></div>
+                                <div class="topic-content">
+                                    <strong>When Nothing Sticks</strong>
+                                    <span>New hires, new tools, new processes — they work for months, then break. That's not bad luck. That's a diagnostic problem.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="topic-icon"></div>
+                                <div class="topic-content">
+                                    <strong>Your Team Isn't the Problem</strong>
+                                    <span>It's the invisible architecture that determines whether good people succeed or fail</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="topic-icon"></div>
+                                <div class="topic-content">
+                                    <strong>The CEO Your Business Needs</strong>
+                                    <span>The hardest founder transition isn't startup to growth — it's operator to CEO</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="topic-icon"></div>
+                                <div class="topic-content">
+                                    <strong>From Founder-Dependent to Transferable</strong>
+                                    <span>Building a company that doesn't collapse when the founder steps away</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>

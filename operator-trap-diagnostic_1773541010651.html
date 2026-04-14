@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Operator Trap Diagnostic — Motherlode Advising</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F1E8;
+  --gold: #EBDBA3;
+  --gold-dark: #D4C48A;
+  --black: #000000;
+  --dark-gray: #2B2B2B;
+  --white: #FFFFFF;
+  --charcoal: #3E2723;
+  --teal: #0299B3;
+  --hot-pink: #F20358;
+  --purple: #5E18E8;
+  --cerulean: #5372FF;
+  --purple-wash: #F7F0FD;
+  --teal-wash: #F0FAFB;
+  --hot-pink-wash: #FFF0F5;
+  --cerulean-wash: #F0F4FF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--cream);
+  color: var(--dark-gray);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- INTRO SCREEN --- */
+.screen { display: none; flex-direction: column; flex: 1; }
+.screen.active { display: flex; }
+
+.intro-screen {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.intro-badge {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 16px;
+}
+
+.intro-screen h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .intro-screen h1 { font-size: 32px; }
+}
+
+.intro-screen .subtitle {
+  font-size: 18px;
+  color: var(--dark-gray);
+  max-width: 520px;
+  margin: 0 auto 12px;
+  line-height: 1.5;
+}
+
+.intro-screen .intro-detail {
+  font-size: 15px;
+  color: #6B6B6B;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.5;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: scale(1.02);
+}
+
+.btn-primary:active { transform: scale(0.98); }
+
+/* --- PROGRESS --- */
+.progress-area {
+  padding: 12px 0 8px;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8A8A8A;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: #E5E0D5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--purple);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* --- QUESTION SCREEN --- */
+.question-screen {
+  justify-content: flex-start;
+}
+
+.question-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+  margin: 24px 0 8px;
+}
+
+@media (max-width: 600px) {
+  .question-text { font-size: 21px; }
+}
+
+.question-instruction {
+  font-size: 14px;
+  color: #8A8A8A;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.question-instruction span {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.option-card {
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.option-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+
+.option-card .option-text {
+  font-size: 16px;
+  color: var(--dark-gray);
+  line-height: 1.5;
+  padding-right: 36px;
+}
+
+.option-card .rank-badge {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.option-card.rank-1 {
+  border-color: var(--teal);
+  background: var(--teal-wash);
+}
+
+.option-card.rank-1 .rank-badge {
+  background: var(--teal);
+  color: var(--white);
+  opacity: 1;
+}
+
+.option-card.rank-2 {
+  border-color: var(--purple);
+  background: var(--purple-wash);
+}
+
+.option-card.rank-2 .rank-badge {
+  background: var(--purple);
+  color: var(--white);
+  opacity: 1;
+}
+
+.nav-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 24px;
+}
+
+.btn-back {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8A8A8A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+
+.btn-back:hover { color: var(--dark-gray); }
+
+.btn-next {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, opacity 0.3s;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.btn-next.enabled {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-next.enabled:hover {
+  background: var(--gold-dark);
+  transform: scale(1.02);
+}
+
+/* --- CALCULATING SCREEN --- */
+.calculating-screen {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.calculating-screen h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.calculating-screen p {
+  font-size: 16px;
+  color: #8A8A8A;
+  margin-bottom: 32px;
+}
+
+.loader {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.loader-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.loader-dot:nth-child(1) { background: var(--purple); animation-delay: 0s; }
+.loader-dot:nth-child(2) { background: var(--teal); animation-delay: 0.2s; }
+.loader-dot:nth-child(3) { background: var(--hot-pink); animation-delay: 0.4s; }
+.loader-dot:nth-child(4) { background: var(--cerulean); animation-delay: 0.6s; }
+
+@keyframes pulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* --- RESULTS SCREEN --- */
+.results-screen {
+  padding: 20px 0 40px;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.results-header .results-badge {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+
+.results-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .results-header h1 { font-size: 28px; }
+}
+
+.results-header .results-intro {
+  font-size: 17px;
+  color: var(--dark-gray);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.pattern-card {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.pattern-card-header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid #F0ECE3;
+}
+
+.pattern-rank {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pattern-card:first-of-type .pattern-rank { color: var(--teal); }
+.pattern-card:nth-of-type(2) .pattern-rank { color: var(--purple); }
+
+.pattern-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.signal-strength {
+  margin-top: 14px;
+}
+
+.signal-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #F0ECE3;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.signal-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.signal-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.signal-desc {
+  font-size: 14px;
+  color: #8A8A8A;
+  line-height: 1.4;
+}
+
+.pattern-card-body {
+  padding: 24px 28px 28px;
+}
+
+.pattern-section {
+  margin-bottom: 20px;
+}
+
+.pattern-section:last-child { margin-bottom: 0; }
+
+.pattern-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  margin-bottom: 6px;
+}
+
+.pattern-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dark-gray);
+}
+
+.watch-for {
+  background: #FDF8EC;
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 0 6px 6px 0;
+  margin-top: 8px;
+}
+
+.watch-for p {
+  font-size: 15px;
+  color: #5C5030;
+}
+
+.results-cta {
+  text-align: center;
+  margin-top: 40px;
+  padding: 36px 28px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.results-cta p {
+  font-size: 17px;
+  color: var(--dark-gray);
+  max-width: 480px;
+  margin: 0 auto 24px;
+  line-height: 1.5;
+}
+
+.results-cta .btn-primary {
+  font-size: 16px;
+  padding: 14px 36px;
+}
+
+.results-footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #E5E0D5;
+}
+
+.results-footer .brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.results-footer .tagline {
+  font-size: 14px;
+  color: #8A8A8A;
+}
+
+/* --- SAVE / PRINT BUTTON --- */
+.btn-save-pdf {
+  display: inline-block;
+  background: none;
+  color: var(--purple);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: 2px solid var(--purple);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 12px;
+}
+
+.btn-save-pdf:hover {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* --- TRANSITIONS --- */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* --- PRINT STYLES --- */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.6in 0.7in;
+  }
+
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+    min-height: auto;
+  }
+
+  /* Hide everything except results */
+  #intro, #questions, #calculating { display: none !important; }
+
+  .results-screen {
+    display: block !important;
+    padding: 0;
+  }
+
+  /* Hide interactive elements */
+  .btn-save-pdf,
+  .results-actions,
+  .results-cta .btn-primary { display: none !important; }
+
+  /* Clean up cards for print */
+  .pattern-card {
+    box-shadow: none !important;
+    border: 1px solid #E0DCD3;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  .results-cta {
+    box-shadow: none !important;
+    border: 1px solid #E0DCD3;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .results-header {
+    margin-bottom: 24px;
+  }
+
+  .results-header h1 {
+    font-size: 24pt;
+  }
+
+  .results-header .results-intro {
+    font-size: 11pt;
+  }
+
+  .pattern-name {
+    font-size: 16pt;
+  }
+
+  .pattern-card-header {
+    padding: 16px 20px 12px;
+  }
+
+  .pattern-card-body {
+    padding: 16px 20px 20px;
+  }
+
+  .pattern-section p {
+    font-size: 10.5pt;
+  }
+
+  .pattern-section-label {
+    font-size: 8.5pt;
+  }
+
+  .signal-bar-track {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background: #F0ECE3 !important;
+  }
+
+  .signal-bar-fill {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .signal-label {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-size: 9pt;
+  }
+
+  .signal-desc {
+    font-size: 9pt;
+  }
+
+  .watch-for {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background: #FDF8EC !important;
+    border-left: 3px solid #EBDBA3 !important;
+  }
+
+  .pattern-card:first-of-type .pattern-rank { color: #0299B3 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .pattern-card:nth-of-type(2) .pattern-rank { color: #5E18E8 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  .results-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  /* Print-only header with date */
+  .print-header {
+    display: block !important;
+    text-align: right;
+    font-size: 9pt;
+    color: #8A8A8A;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #E5E0D5;
+    padding-bottom: 8px;
+  }
+}
+
+/* Hide print header on screen */
+.print-header { display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div id="intro" class="screen intro-screen active">
+    <div class="intro-badge">Motherlode Advising</div>
+    <h1>The Operator Trap Diagnostic</h1>
+    <p class="subtitle">Most founders know something's off. Fewer can name what it is. This diagnostic maps your symptoms to the pattern that's actually keeping you stuck.</p>
+    <p class="intro-detail">10 questions. Pick the two answers that hit closest to home. Takes about 3 minutes.</p>
+    <button class="btn-primary" onclick="startDiagnostic()">Start the Diagnostic</button>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div id="questions" class="screen question-screen">
+    <div class="progress-area">
+      <div class="progress-meta">
+        <span class="progress-label" id="progressLabel">Question 1 of 10</span>
+        <span class="progress-label" id="progressPct">10%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+      </div>
+    </div>
+
+    <div class="question-area" id="questionArea">
+      <!-- Populated by JS -->
+    </div>
+
+    <div class="nav-area">
+      <button class="btn-back" id="btnBack" onclick="prevQuestion()">← Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">Continue</button>
+    </div>
+  </div>
+
+  <!-- CALCULATING -->
+  <div id="calculating" class="screen calculating-screen">
+    <h2>Mapping your patterns...</h2>
+    <p>Matching your symptoms to what's actually underneath.</p>
+    <div class="loader">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="screen results-screen">
+    <!-- Populated by JS -->
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const PATTERNS = {
+  bottleneck: {
+    name: "The Decision Bottleneck",
+    description: "Everything of consequence still flows through you — not because your team can't handle it, but because the system was built around your involvement. You've become load-bearing infrastructure in your own company. The business can function, but it can't move without you in the room.",
+    triedFirst: "You've probably tried delegating more. Maybe you even hired a second-in-command. But delegation without the right communication architecture just creates a boomerang — decisions go out, uncertainty comes back, and you end up re-making the call anyway. The problem isn't willingness to let go. It's that the system doesn't know how to run without the thing you provide.",
+    underneath: "This isn't a delegation problem. It's a design problem. The way information moves, decisions get made, and authority is distributed was never rebuilt for the company you are now.",
+    watchFor: "This pattern often has a financial shadow you won't see until you look: when the founder is the bottleneck, the company is paying senior salaries for people operating below their capability — and paying the founder's opportunity cost on top of it."
+  },
+  conversation: {
+    name: "The Conversation Gap",
+    description: "The conversations that would actually move things forward aren't happening. Your team works around problems instead of through them. Feedback is vague or absent. Tension accumulates under a surface of \"we're all good.\" You can feel it, even if you can't always point to it.",
+    triedFirst: "Most founders in this pattern try having the big talk — the direct, overdue conversation they've been avoiding. Sometimes it even goes well. But a month later, the same dynamics are back, because one honest conversation doesn't rebuild the norms around how a team communicates day to day. The infrastructure for honesty doesn't exist yet.",
+    underneath: "This isn't about courage or avoiding conflict. It's about the unspoken rules your team has absorbed about what's safe to say — and what carries a cost. Those rules were set early, and they don't change with a single conversation.",
+    watchFor: null
+  },
+  recycling: {
+    name: "The Recycling Loop",
+    description: "You're solving the same problems on repeat. Different quarter, different surface details, same underlying breakdown. You leave meetings feeling aligned, and two weeks later you're back in the same conversation. It's not that your team lacks good ideas — it's that nothing sticks.",
+    triedFirst: "New processes, better tools, different project management systems, maybe a consultant who came in, built something, and left. The implementations look right on paper. But they degrade within weeks because the pattern that created the original problem was never identified — just papered over with a new workflow.",
+    underneath: "Recurring problems aren't an execution failure. They're a navigation failure — your company is treating symptoms instead of diagnosing what's driving them. Until the root pattern is visible, every fix is temporary.",
+    watchFor: "When problems keep recycling, money does too. You may be spending more than you realize re-solving the same breakdowns — not just in direct cost, but in the hidden drag on momentum."
+  },
+  ceiling: {
+    name: "The Growth Ceiling",
+    description: "You've outgrown the system that got you here. Your team can execute tasks, but they're not thinking at the level the business now requires. The processes, the decision-making structure, the way problems get escalated — all of it was built for a company half your current size. And it's starting to show.",
+    triedFirst: "New hires — usually someone senior who's \"done this before\" at a bigger company. But parachuting in experience doesn't automatically upgrade the system. The new person either adapts to the current (undersized) way of operating, or clashes with it and leaves. The structural gap remains.",
+    underneath: "This isn't a talent problem. It's a systems maturity problem. The company needs to learn new ways of operating, not just add new people who already know them.",
+    watchFor: "Growth ceilings have a cost dimension: you're investing in growth but the returns are flattening because the infrastructure can't convert that investment efficiently."
+  },
+  drift: {
+    name: "The Culture Drift",
+    description: "The thing that made your company special is quietly disappearing. You're growing, maybe even thriving by external measures, but something essential has shifted. New people don't quite get it. Decisions are being made that feel off but aren't technically wrong. It doesn't feel like your company anymore.",
+    triedFirst: "Values exercises, all-hands meetings, team retreats. Maybe you wrote a culture doc or updated the mission statement. These things aren't useless, but they're treating culture as a communications problem when it's actually a leadership one. Culture isn't what you write on the wall — it's what gets tolerated and rewarded every day.",
+    underneath: "Culture doesn't drift randomly. It follows the founder's attention. When you shifted your energy toward growth, operations, or firefighting, the culture started following whoever filled the vacuum. Getting it back isn't about words — it's about what you signal through decisions.",
+    watchFor: null
+  }
+};
+
+const QUESTIONS = [
+  {
+    text: "When you look at your calendar for the week ahead, the feeling that hits you most is:",
+    options: [
+      { text: "\"How am I in this many meetings?\"", maps: "bottleneck" },
+      { text: "\"At least two of these are going to be uncomfortable.\"", maps: "conversation" },
+      { text: "\"Didn't we already deal with this last quarter?\"", maps: "recycling" },
+      { text: "\"I'm not sure any of this is actually moving the needle.\"", maps: "ceiling" }
+    ]
+  },
+  {
+    text: "You've hired good people. But lately:",
+    options: [
+      { text: "They still come to me for every decision that matters.", maps: "bottleneck" },
+      { text: "There's tension on the team that nobody's addressing.", maps: "conversation" },
+      { text: "They're busy, but we keep circling back to the same issues.", maps: "recycling" },
+      { text: "They're doing their jobs, but not owning the outcomes.", maps: "ceiling" }
+    ]
+  },
+  {
+    text: "If you could fix one thing tomorrow, it would be:",
+    options: [
+      { text: "Getting my time back — I'm in everything.", maps: "bottleneck" },
+      { text: "Getting my team to be honest with each other — and with me.", maps: "conversation" },
+      { text: "Getting changes to actually stick instead of reverting.", maps: "recycling" },
+      { text: "Getting the right people in the right seats for where we're going.", maps: "ceiling" }
+    ]
+  },
+  {
+    text: "When a problem comes up that should have been caught earlier, your first thought is:",
+    options: [
+      { text: "\"I should have been more involved.\"", maps: "bottleneck" },
+      { text: "\"Why didn't someone tell me sooner?\"", maps: "conversation" },
+      { text: "\"We literally talked about this. Why is it happening again?\"", maps: "recycling" },
+      { text: "\"We don't have the right systems for this stage.\"", maps: "ceiling" }
+    ]
+  },
+  {
+    text: "The last time you took a real vacation:",
+    options: [
+      { text: "I couldn't stop checking in — things fall apart without me.", maps: "bottleneck" },
+      { text: "I came back to fires my team could have handled but didn't.", maps: "ceiling" },
+      { text: "I came back to the same problems I left.", maps: "recycling" },
+      { text: "I can't remember the last time I took one.", maps: "drift" }
+    ]
+  },
+  {
+    text: "When you think about your company culture right now:",
+    options: [
+      { text: "It's fine, but it revolves around me more than it should.", maps: "bottleneck" },
+      { text: "People are nice to each other, but the real issues don't surface.", maps: "conversation" },
+      { text: "It's reactive — we're always putting out fires.", maps: "recycling" },
+      { text: "We've lost something. The energy and alignment we used to have.", maps: "drift" }
+    ]
+  },
+  {
+    text: "Your most frustrating recurring thought:",
+    options: [
+      { text: "\"If I don't do it, it won't get done right.\"", maps: "bottleneck" },
+      { text: "\"I don't know who I can really trust with the truth.\"", maps: "conversation" },
+      { text: "\"Everyone's working hard but we're not getting anywhere new.\"", maps: "recycling" },
+      { text: "\"My team can execute tasks, but they can't think strategically.\"", maps: "ceiling" }
+    ]
+  },
+  {
+    text: "When a friend asks how things are going, you say:",
+    options: [
+      { text: "\"Great on paper, but I'm holding it together with duct tape.\"", maps: "bottleneck" },
+      { text: "\"Good team, but something's off and I can't quite name it.\"", maps: "conversation" },
+      { text: "\"Profitable, but we keep hitting the same walls.\"", maps: "recycling" },
+      { text: "\"Growing, but it doesn't feel like my company anymore.\"", maps: "drift" }
+    ]
+  },
+  {
+    text: "The thing you've already tried that didn't work:",
+    options: [
+      { text: "Delegated more — but people just escalate it back to me.", maps: "bottleneck" },
+      { text: "Had the tough conversation — but nothing actually changed.", maps: "conversation" },
+      { text: "Implemented new processes — but nobody follows them consistently.", maps: "recycling" },
+      { text: "Brought in new hires — but the same dynamics showed up again.", maps: "drift" }
+    ]
+  },
+  {
+    text: "If you're being honest, the thing you're most avoiding is:",
+    options: [
+      { text: "Letting go of control, even though I know I should.", maps: "bottleneck" },
+      { text: "Having the conversation that might blow things up.", maps: "conversation" },
+      { text: "Admitting that what got us here won't get us there.", maps: "ceiling" },
+      { text: "Looking at whether this company still reflects what I actually care about.", maps: "drift" }
+    ]
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let currentQ = 0;
+let answers = []; // each entry: { first: patternKey, second: patternKey }
+
+function initAnswers() {
+  answers = QUESTIONS.map(() => ({ first: null, second: null }));
+}
+
+// ============================================================
+// SCREENS
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const screen = document.getElementById(id);
+  screen.classList.add('active');
+  screen.classList.add('fade-enter');
+  requestAnimationFrame(() => {
+    screen.classList.add('fade-enter-active');
+    setTimeout(() => {
+      screen.classList.remove('fade-enter', 'fade-enter-active');
+    }, 400);
+  });
+}
+
+function startDiagnostic() {
+  initAnswers();
+  currentQ = 0;
+  showScreen('questions');
+  renderQuestion();
+}
+
+// ============================================================
+// QUESTIONS
+// ============================================================
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  const a = answers[currentQ];
+
+  // Progress
+  const pct = Math.round(((currentQ + 1) / QUESTIONS.length) * 100);
+  document.getElementById('progressLabel').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progressPct').textContent = `${pct}%`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+
+  // Back button
+  document.getElementById('btnBack').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+
+  // Build question HTML
+  const area = document.getElementById('questionArea');
+  area.innerHTML = `
+    <h2 class="question-text">${q.text}</h2>
+    <p class="question-instruction">Tap your <span>#1</span> pick, then your <span>#2</span>. First pick carries more weight.</p>
+    <div class="options-list" id="optionsList">
+      ${q.options.map((opt, i) => {
+        let rankClass = '';
+        if (a.first === i) rankClass = 'rank-1';
+        else if (a.second === i) rankClass = 'rank-2';
+        return `
+          <div class="option-card ${rankClass}" data-index="${i}" onclick="selectOption(${i})">
+            <div class="option-text">${opt.text}</div>
+            <div class="rank-badge">${rankClass === 'rank-1' ? '1' : rankClass === 'rank-2' ? '2' : ''}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  updateNextButton();
+}
+
+function selectOption(index) {
+  const a = answers[currentQ];
+
+  if (a.first === index) {
+    // Deselect first → promote second to first
+    a.first = a.second;
+    a.second = null;
+  } else if (a.second === index) {
+    // Deselect second
+    a.second = null;
+  } else if (a.first === null) {
+    // Nothing selected yet → becomes first
+    a.first = index;
+  } else if (a.second === null) {
+    // First exists, second empty → becomes second
+    a.second = index;
+  } else {
+    // Both exist → replace second
+    a.second = index;
+  }
+
+  renderQuestion();
+}
+
+function updateNextButton() {
+  const a = answers[currentQ];
+  const btn = document.getElementById('btnNext');
+  const ready = a.first !== null && a.second !== null;
+  btn.classList.toggle('enabled', ready);
+  btn.textContent = currentQ === QUESTIONS.length - 1 ? 'See My Results' : 'Continue';
+}
+
+function nextQuestion() {
+  const a = answers[currentQ];
+  if (a.first === null || a.second === null) return;
+
+  if (currentQ < QUESTIONS.length - 1) {
+    currentQ++;
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    showCalculating();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ============================================================
+// CALCULATING & RESULTS
+// ============================================================
+function showCalculating() {
+  showScreen('calculating');
+  setTimeout(() => {
+    showResults();
+  }, 2400);
+}
+
+function tallyScores() {
+  const scores = { bottleneck: 0, conversation: 0, recycling: 0, ceiling: 0, drift: 0 };
+
+  answers.forEach((a, qi) => {
+    const q = QUESTIONS[qi];
+    if (a.first !== null) {
+      scores[q.options[a.first].maps] += 2; // first pick = full weight
+    }
+    if (a.second !== null) {
+      scores[q.options[a.second].maps] += 1; // second pick = partial weight
+    }
+  });
+
+  return scores;
+}
+
+function getTopPatterns(scores) {
+  const sorted = Object.entries(scores)
+    .sort((a, b) => b[1] - a[1])
+    .filter(([_, score]) => score > 0);
+
+  // Always return top 2
+  return sorted.slice(0, 2).map(([key]) => key);
+}
+
+function getSignalStrength(pct) {
+  if (pct >= 45) return { label: 'Strong signal', desc: 'This pattern showed up consistently across your answers.', color: '#0299B3' };
+  if (pct >= 30) return { label: 'Clear signal', desc: 'This pattern was present in several of your answers.', color: '#5E18E8' };
+  return { label: 'Emerging signal', desc: 'This pattern is starting to surface in your answers.', color: '#EBDBA3' };
+}
+
+function showResults() {
+  const scores = tallyScores();
+  const topKeys = getTopPatterns(scores);
+
+  const totalPoints = Object.values(scores).reduce((sum, v) => sum + v, 0);
+
+  const resultsDiv = document.getElementById('results');
+
+  // Check if patterns are spread evenly (no dominant pattern)
+  const topPct = Math.round((scores[topKeys[0]] / totalPoints) * 100);
+  const isSpread = topPct < 30;
+
+  let spreadNotice = '';
+  if (isSpread) {
+    spreadNotice = `
+      <div style="background: #FDF8EC; border-left: 3px solid #EBDBA3; padding: 18px 22px; border-radius: 0 8px 8px 0; margin-bottom: 28px;">
+        <p style="font-size: 16px; line-height: 1.6; color: #5C5030; margin: 0;">
+          <strong>A note on your results:</strong> Your symptoms didn't cluster around one dominant pattern — they're distributed across several. This isn't unusual, and it's actually a meaningful finding: it often means the patterns are reinforcing each other. One area of stuck creates pressure that shows up in another, which creates pressure somewhere else. Untangling which one is the driver — versus which ones are downstream effects — is exactly what diagnostic coaching is for.
+        </p>
+      </div>
+    `;
+  }
+
+  let cardsHTML = topKeys.map((key, i) => {
+    const p = PATTERNS[key];
+    const pctOfTotal = Math.round((scores[key] / totalPoints) * 100);
+    const signal = getSignalStrength(pctOfTotal);
+    const rankLabel = i === 0 ? 'Your primary pattern' : 'Your secondary pattern';
+
+    let watchHTML = '';
+    if (p.watchFor) {
+      watchHTML = `
+        <div class="watch-for">
+          <div class="pattern-section-label">Worth watching</div>
+          <p>${p.watchFor}</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="pattern-card">
+        <div class="pattern-card-header">
+          <div class="pattern-rank">${rankLabel}</div>
+          <div class="pattern-name">${p.name}</div>
+          <div class="signal-strength">
+            <div class="signal-bar-track">
+              <div class="signal-bar-fill" style="width: ${pctOfTotal}%; background: ${signal.color};"></div>
+            </div>
+            <div class="signal-label" style="color: ${signal.color};">${signal.label}</div>
+            <div class="signal-desc">${signal.desc}</div>
+          </div>
+        </div>
+        <div class="pattern-card-body">
+          <div class="pattern-section">
+            <div class="pattern-section-label">What your symptoms point to</div>
+            <p>${p.description}</p>
+          </div>
+          <div class="pattern-section">
+            <div class="pattern-section-label">What most founders try first</div>
+            <p>${p.triedFirst}</p>
+          </div>
+          <div class="pattern-section">
+            <div class="pattern-section-label">What's actually underneath</div>
+            <p>${p.underneath}</p>
+          </div>
+          ${watchHTML}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  resultsDiv.innerHTML = `
+    <div class="print-header">The Operator Trap Diagnostic — ${today}</div>
+    <div class="results-header">
+      <div class="results-badge">Your Diagnostic Results</div>
+      <h1>Here's what your symptoms are telling you.</h1>
+      <p class="results-intro">This isn't a personality type or a score. It's a map of the patterns that showed up most consistently in your answers — and what they typically point to underneath the surface.</p>
+      <div class="results-actions">
+        <button class="btn-save-pdf" onclick="window.print()">Save as PDF</button>
+      </div>
+    </div>
+    ${spreadNotice}
+    ${cardsHTML}
+    <div class="results-cta">
+      <p>This is where diagnostic coaching starts. Not with fixes — with figuring out what's actually driving the pattern so you stop cycling through solutions that don't stick.</p>
+      <a href="https://motherlode.biz" target="_blank" class="btn-primary">Learn About Coaching</a>
+    </div>
+    <div class="results-footer">
+      <div class="brand">Motherlode Advising</div>
+      <div class="tagline">Diagnostic coaching for founder-CEOs</div>
+    </div>
+  `;
+
+  showScreen('results');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

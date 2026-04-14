@@ -1,0 +1,38 @@
+Here's the prompt for your motherlode.biz Replit project:
+
+Update the website to store and render 6 new structured data fields for events, fixing Google Search Console warnings.
+My event scraper (a separate app) has already been updated to send these 6 new fields to the /api/external-events endpoint: endDate, image, performer, price, priceCurrency, and offerValidFrom. I need the website to actually save and use them.
+1. Update the database schema
+Add columns/fields for any of these that don't already exist on the events table/model:
+
+endDate (ISO 8601 datetime string, e.g., "2026-03-10T13:30:00-06:00")
+image (URL string)
+performer (string — person or organization name)
+price (string — e.g., "0" for free, "25" for paid)
+priceCurrency (string — e.g., "USD")
+offerValidFrom (date string — e.g., "2026-03-03")
+
+2. Update the /api/external-events endpoint
+Make sure the API endpoint that receives scraped event data actually reads and stores all 6 new fields. Right now it may be ignoring them.
+3. Update my own event creation flow
+If there's an admin form or CMS where I manually create events (non-scraped ones), add input fields for: end date/time, image URL, performer/host name, price, and currency. Use sensible defaults where possible (e.g., "USD" for currency, "0" for free events).
+4. Update the JSON-LD structured data on event pages
+Find where Event schema markup is generated (likely a <script type="application/ld+json"> block in the event page template) and update it to include:
+json"endDate": "[endDate value]",
+"image": "[image URL]",
+"performer": {
+  "@type": "Person",
+  "name": "[performer value]"
+},
+"offers": {
+  "@type": "Offer",
+  "price": "[price value]",
+  "priceCurrency": "[priceCurrency value]",
+  "validFrom": "[offerValidFrom value]",
+  "url": "[registration/event link]",
+  "availability": "https://schema.org/InStock"
+}
+If any field is empty/null for a given event, omit it from the JSON-LD rather than outputting a blank value.
+5. Verify
+After making changes, show me a sample event page's JSON-LD output so I can confirm all 6 fields are rendering correctly.
+

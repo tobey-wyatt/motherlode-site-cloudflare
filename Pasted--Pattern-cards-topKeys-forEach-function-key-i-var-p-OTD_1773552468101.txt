@@ -1,0 +1,94 @@
+// --- Pattern cards ---
+      topKeys.forEach(function(key, i) {
+        var p = OTD_PATTERNS[key];
+        var pctOfTotal = Math.round((scores[key] / totalPoints) * 100);
+        var signal = otdGetSignalStrength(pctOfTotal);
+        var rankLabel = i === 0 ? 'YOUR PRIMARY PATTERN' : 'YOUR SECONDARY PATTERN';
+        var accentColor = i === 0 ? TEAL : PURPLE;
+        var cx = marginL + 10, textW = contentW - 20;
+        var descLines = getLines(p.description, textW, 9);
+        var triedLines = getLines(p.triedFirst, textW, 9);
+        var underLines = getLines(p.underneath, textW, 9);
+        var watchLines = p.watchFor ? getLines(p.watchFor, textW - 8, 8.5) : [];
+        // Accent bar tracks per-page segments
+        var barStartY = y;
+        function flushBar() {
+          if (y > barStartY) {
+            doc.setFillColor.apply(doc, accentColor);
+            doc.rect(marginL, barStartY, 2, y - barStartY, 'F');
+          }
+        }
+        function sectionBreak(needed) {
+          if (y + needed > contentBottom) {
+            flushBar();
+            doc.addPage();
+            y = contentTop;
+            barStartY = y;
+          }
+        }
+        // Card header (rank + name + signal) — keep together
+        sectionBreak(20);
+        var cy = y + 6;
+        doc.setTextColor.apply(doc, accentColor);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8);
+        doc.text(rankLabel, cx, cy);
+        cy += 5;
+        doc.setTextColor.apply(doc, [0, 0, 0]);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.text(p.name, cx, cy);
+        cy += 6;
+        var sigRGB = signal.color === '#F20358' ? HOT_PINK : signal.color === '#5372FF' ? CERULEAN : GOLD;
+        doc.setTextColor.apply(doc, sigRGB);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.text(signal.label.toUpperCase(), cx, cy);
+        doc.setTextColor.apply(doc, LIGHT_GRAY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.text('  \u2014  ' + signal.desc, cx + doc.getTextWidth(signal.label.toUpperCase()), cy);
+        y += 20;
+        // Content sections — each can break independently
+        var sections = [
+          { label: 'WHAT YOUR SYMPTOMS POINT TO', lines: descLines },
+          { label: 'WHAT MOST FOUNDERS TRY FIRST', lines: triedLines },
+          { label: 'WHAT\u2019S ACTUALLY UNDERNEATH', lines: underLines }
+        ];
+        sections.forEach(function(sec) {
+          var secH = 3 + sec.lines.length * 3.8 + 2;
+          sectionBreak(secH);
+          var sy = y + 3;
+          doc.setTextColor.apply(doc, LIGHT_GRAY);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(7.5);
+          doc.text(sec.label, cx, sy);
+          sy += 3;
+          doc.setTextColor.apply(doc, DARK_GRAY);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(9);
+          doc.text(sec.lines, cx, sy, { lineHeightFactor: 1.25 });
+          y += secH;
+        });
+        // Watch-for callout
+        if (watchLines.length > 0) {
+          var wfH = watchLines.length * 3.6 + 8;
+          sectionBreak(wfH + 4);
+          y += 2;
+          doc.setFillColor.apply(doc, WARM_BG);
+          doc.roundedRect(cx, y, textW, wfH, 1.5, 1.5, 'F');
+          doc.setFillColor.apply(doc, GOLD);
+          doc.rect(cx, y, 1.2, wfH, 'F');
+          doc.setTextColor(92, 80, 48);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(7);
+          doc.text('WORTH WATCHING', cx + 5, y + 4);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(8.5);
+          doc.text(watchLines, cx + 5, y + 8.5);
+          y += wfH + 2;
+        }
+        // Flush accent bar for final segment
+        flushBar();
+        y += 5;
+      });

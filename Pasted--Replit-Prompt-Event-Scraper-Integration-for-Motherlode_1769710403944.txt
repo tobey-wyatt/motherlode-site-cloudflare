@@ -1,0 +1,139 @@
+# Replit Prompt: Event Scraper & Integration for Motherlode.biz
+
+## Objective
+Create a web scraper that automatically pulls events from two external Chicago networking sites and integrates them into the Motherlode.biz events page (https://www.motherlode.biz/events.html) with proper tagging and redirect functionality.
+
+## Source Sites to Scrape
+
+### 1. Windy City Business Network
+- **URL:** https://www.windycitybiz.net/events/
+- **Event Structure:**
+  - Title (in h2/h3 tags)
+  - Date and time (format: "January 29, 2026, 5:30 pm")
+  - Description (paragraph text)
+  - Registration link (Eventbrite URLs in anchor tags with text "Get Tickets on Eventbrite")
+
+### 2. Always Be Connecting
+- **URL:** https://www.alwaysbeconnecting.net/events
+- **Event Structure:**
+  - Title (heading text, e.g., "Trades Connect - Networking Event")
+  - Date and time (format: "Wednesday, January 28, 2026 5:00 PM - 7:00 PM")
+  - Location (physical address in Chicagoland area)
+  - Description (paragraph text with event details)
+  - Registration link (button/link with text "REGISTER HERE")
+
+## Target Site Structure
+
+### Motherlode.biz Events Page
+- **URL:** https://www.motherlode.biz/events.html
+- **Current Event Format:**
+  ```html
+  <article>
+    <heading>Event Title</heading>
+    <generic>Date</generic>
+    <generic>Time</generic>
+    <generic>Location</generic>
+    <generic>Description (truncated)</generic>
+    <link href="registration-url">RSVP/Register Button Text</link>
+  </article>
+  ```
+
+## Required Event Data Fields
+Extract and transform the following for each event:
+1. **title** - Event name/title
+2. **date** - Formatted date string
+3. **time** - Time range (e.g., "5:30 PM - 8:00 PM CT")
+4. **location** - Venue name and address (all scraped events are in-person)
+5. **description** - Brief event description (keep to 1-2 sentences max)
+6. **registration_url** - Link to Eventbrite/registration page
+7. **source** - Which site the event came from ("windycitybiz" or "alwaysbeconnecting")
+
+## Required Tags
+All scraped events must be automatically tagged with:
+- **"outside"** or **"non-motherlode"** - Indicates this is an external event
+- **"in-person"** - All these events are in-person networking events
+- **"Chicago"** or **"Chicagoland"** - Geographic identifier
+
+## Redirect Functionality
+When users click on external events, they should:
+1. Be taken directly to the original registration page (Eventbrite for Windy City Biz, or the registration page for Always Be Connecting)
+2. NOT require any intermediate Motherlode page
+3. Open in the same tab (or new tab based on standard link behavior)
+
+## Technical Requirements
+
+### 1. Web Scraping
+- Use Python with BeautifulSoup or Scrapy, or Node.js with Cheerio/Puppeteer
+- Handle pagination if events span multiple pages
+- Only scrape future/upcoming events (skip past events)
+- Run scraper on a schedule (daily or weekly) to keep events updated
+
+### 2. Data Transformation
+- Normalize date formats to match Motherlode's display format
+- Extract location from description text if not explicitly structured
+- Truncate descriptions to ~100-150 characters for consistency
+- Handle timezone conversions (most events are CT/CST/CDT)
+
+### 3. HTML Generation
+- Generate article elements matching Motherlode's existing event structure
+- Add tag indicators (could be as simple as a class name or data attribute)
+- Include color-coding or visual distinction for external events
+- Preserve the calendar integration if Motherlode uses one
+
+### 4. Integration Method (Choose One)
+**Option A: Static HTML Injection**
+- Generate a separate HTML file with external events
+- Use JavaScript to inject into the events page on load
+- Simple iframe or fetch-and-append approach
+
+**Option B: Backend Integration**
+- Store scraped events in a lightweight database (JSON file, SQLite, or similar)
+- Serve combined events through an API endpoint
+- Update the events page to fetch from this endpoint
+
+**Option C: Build-Time Generation**
+- Run scraper as part of site build process
+- Generate static HTML files with all events combined
+- Rebuild/redeploy when events are updated
+
+## Output Format Example
+
+```json
+{
+  "event_id": "windycitybiz_20260129_naperville",
+  "title": "Naperville Business Network Event @ Empire's Enclosed Rooftop",
+  "date": "January 29, 2026",
+  "time": "5:30 PM - 8:00 PM CT",
+  "location": "Empire's Rooftop, Downtown Naperville",
+  "description": "Join us for drinks, appetizers and casual networking at Empire's glass-enclosed rooftop.",
+  "registration_url": "https://www.eventbrite.com/...",
+  "source": "windycitybiz",
+  "tags": ["outside", "in-person", "Chicago"],
+  "is_external": true
+}
+```
+
+## User Story
+As a Motherlode.biz visitor:
+1. I navigate to the events page
+2. I see both Motherlode events AND external Chicago networking events
+3. External events are clearly marked (e.g., with an "External Event" badge or different styling)
+4. I can click on any external event to be taken directly to its registration page
+5. I understand these are quality networking opportunities in Chicago, curated to help me connect
+
+## Success Criteria
+- [ ] Scraper runs automatically on a schedule
+- [ ] Events from both external sources appear on Motherlode events page
+- [ ] All external events have proper tags ("outside", "in-person", "Chicago")
+- [ ] Clicking external events redirects to original registration page
+- [ ] Event data stays fresh (past events are removed, new events added)
+- [ ] Visual distinction makes it clear which events are external
+- [ ] Page loads quickly even with external event data
+- [ ] No broken links or missing event information
+
+## Notes
+- Focus on simplicity - this should be a lightweight integration
+- All events from these sources are Chicago-area, in-person networking events
+- The goal is to support people finding quality networking opportunities, not to replicate full event platforms
+- Consider error handling for when external sites are down or change their structure
+- May want to add a "Last Updated" timestamp to show data freshness

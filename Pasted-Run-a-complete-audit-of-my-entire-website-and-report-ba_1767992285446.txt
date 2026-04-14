@@ -1,0 +1,71 @@
+Run a complete audit of my entire website and report back ALL issues before making any changes. Do not fix anything yet - just identify and list problems.
+
+CHECK THE FOLLOWING:
+
+## 1. NAVIGATION CONSISTENCY
+- List the navigation menu items on EVERY page
+- Flag any pages where nav items differ from others
+- Flag any broken nav links
+- Confirm "Media" appears on all pages and links to /media
+
+## 2. HEADER/FOOTER CONSISTENCY
+- Compare header code/styling across all pages
+- Compare footer code/styling across all pages
+- Flag any pages where header or footer differs from the rest
+
+## 3. BROKEN LINKS
+- Check ALL internal links on ALL pages
+- Check ALL external links (podcasts, articles, YouTube, etc.)
+- List any 404s or dead links
+
+## 4. STYLING/BRAND CONSISTENCY
+- Are the same fonts used across all pages?
+- Are the same brand colors used consistently?
+- Any pages with different styling or CSS issues?
+
+## 5. SEO/META TAGS
+- List meta title and description for each page
+- Flag any pages missing meta tags
+- Flag any pages missing Open Graph tags
+- Check for duplicate or generic meta content
+
+## 6. MOBILE RESPONSIVENESS
+- Flag any pages or sections with mobile display issues
+- Check that navigation works on mobile across all pages
+
+## 7. ACCESSIBILITY
+- Check for missing alt text on images
+- Check heading hierarchy (h1, h2, h3) on each page
+- Flag any contrast or focus state issues
+
+## 8. ORPHANED/UNUSED CODE
+- Any CSS files or styles not being used?
+- Any JavaScript not being used?
+- Any pages or routes that exist but aren't linked to?
+- Any leftover blog-related code or references?
+
+## 9. PERFORMANCE
+- Any large unoptimized images?
+- Any render-blocking resources?
+- Any unnecessary scripts loading?
+
+## 10. FORMS & FUNCTIONALITY
+- Test all forms (contact, email capture, etc.)
+- Test all buttons and CTAs
+- Confirm Calendly embeds work if present
+- Confirm any GHL integrations work
+
+---
+
+OUTPUT FORMAT:
+For each issue found, tell me:
+- Which page
+- What the issue is
+- Severity (Critical / Should Fix / Nice to Have)
+
+After listing all issues, summarize:
+- Total critical issues
+- Total should-fix issues
+- Total nice-to-have issues
+
+Do NOT make any changes. Just report findings.

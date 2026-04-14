@@ -1,0 +1,169 @@
+# Index Page Changes for Replit
+
+## 1. ICP Range: Update "5-75" → "1-50" (multiple locations)
+
+### Line 14 — meta description
+```
+OLD: content="Coaching for founder-CEOs of 5-75 person companies who've tried the obvious fixes. I help you find what's actually broken. Chicago-based, nationwide."
+NEW: content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken. Bloomington, IN-based, nationwide."
+```
+
+### Line 41 — og:description
+```
+OLD: content="Coaching for founder-CEOs of 5-75 person companies who've tried the obvious fixes. I help you find what's actually broken."
+NEW: content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken."
+```
+
+### Line 53 — twitter:description
+```
+OLD: content="Coaching for founder-CEOs of 5-75 person companies who've tried the obvious fixes. I help you find what's actually broken."
+NEW: content="Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes. I help you find what's actually broken."
+```
+
+### Line 433 — Schema.org organization description
+```
+OLD: "description": "Coaching for founder-CEOs of 5-75 person companies who've tried the obvious fixes and need someone who sees what's actually broken.",
+NEW: "description": "Coaching for founder-CEOs of 1-50 person companies who've tried the obvious fixes and need someone who sees what's actually broken.",
+```
+
+---
+
+## 2. Location: Update "Chicago, IL" → "Bloomington, IN" (multiple locations)
+
+### Line 434-438 — Schema.org address
+```
+OLD:
+"addressLocality": "Chicago",
+"addressRegion": "IL",
+
+NEW:
+"addressLocality": "Bloomington",
+"addressRegion": "IN",
+```
+
+### Line 982 — Footer location text
+```
+OLD: Chicago, IL | Serving Nationwide
+NEW: Bloomington, IN | Serving Nationwide
+```
+
+---
+
+## 3. Fillout Embed — Dark Mode via JavaScript
+
+The Fillout embed renders inside an iframe, so your site's CSS can't reach it. Since you're on the free Fillout plan (no custom CSS), the best approach is to use JavaScript to inject a dark-mode-aware stylesheet into the Fillout iframe after it loads.
+
+### Replace lines 966-969 with:
+
+```html
+<div class="contact-form-container">
+    <div style="width:100%;height:500px;" data-fillout-id="6USXmQiGyKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+    <script src="https://server.fillout.com/embed/v1/"></script>
+    <script>
+    // Inject dark mode styles into Fillout iframe
+    (function() {
+        function injectFilloutDarkMode() {
+            var iframe = document.querySelector('.fillout-embed-iframe-container > iframe, [data-fillout-id] iframe');
+            if (!iframe) {
+                // Retry — Fillout iframe may not exist yet
+                if (injectFilloutDarkMode._retries < 30) {
+                    injectFilloutDarkMode._retries++;
+                    setTimeout(injectFilloutDarkMode, 500);
+                }
+                return;
+            }
+            try {
+                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                var style = iframeDoc.createElement('style');
+                style.textContent = '@media (prefers-color-scheme: dark) {' +
+                    'body, .fillout-field-container { background-color: #252220 !important; color: #E8E6E1 !important; }' +
+                    'input, textarea, select { background-color: #1A1817 !important; color: #E8E6E1 !important; border-color: #444 !important; }' +
+                    'input::placeholder { color: #888 !important; }' +
+                    'label, p, span, h1, h2, h3, h4, h5, h6 { color: #E8E6E1 !important; }' +
+                    'button[type="submit"] { background-color: #EBDBA3 !important; color: #000 !important; }' +
+                    '}';
+                iframeDoc.head.appendChild(style);
+            } catch(e) {
+                // Cross-origin — can't inject. Fillout blocks this.
+            }
+        }
+        injectFilloutDarkMode._retries = 0;
+        // Wait for iframe to load
+        setTimeout(injectFilloutDarkMode, 2000);
+    })();
+    </script>
+</div>
+```
+
+### ⚠️ IMPORTANT CAVEAT about Fillout iframe injection:
+This JavaScript approach attempts to inject CSS into the Fillout iframe. However, if Fillout serves their iframe from a different origin (which they almost certainly do), the browser's cross-origin security policy will BLOCK this injection silently. The try/catch handles this gracefully — it just won't work.
+
+### If cross-origin blocks it (likely), here are the realistic fallback options:
+
+**Option A: CSS filter on the iframe container (works, not perfect)**
+Add this to your existing `@media (prefers-color-scheme: dark)` block in the `<style>` section:
+
+```css
+@media (prefers-color-scheme: dark) {
+    /* Existing dark mode rules... */
+
+    /* Invert Fillout form colors for dark mode */
+    .contact-form-container {
+        filter: invert(0.88) hue-rotate(180deg) !important;
+    }
+    /* Un-invert any images inside the form */
+    .contact-form-container img {
+        filter: invert(1) hue-rotate(180deg) !important;
+    }
+}
+```
+
+This CSS filter inverts the light-themed form to appear dark. It's not pixel-perfect but it's the most common workaround for third-party iframes that don't support dark mode. The hue-rotate(180deg) corrects the color shift that invert causes. Adjust the 0.88 value to taste (1.0 = full invert, 0.85-0.92 usually looks best).
+
+**Option B: Same approach for Calendly** (if Calendly doesn't respect dark mode either)
+```css
+@media (prefers-color-scheme: dark) {
+    .calendly-inline-widget {
+        filter: invert(0.88) hue-rotate(180deg) !important;
+    }
+}
+```
+
+**Option C: Upgrade Fillout to Pro** and use their Custom CSS feature with `@media (prefers-color-scheme: dark)` rules applied directly inside Fillout's theme editor. This is the cleanest solution long-term.
+
+---
+
+## 4. Calendly Dark Mode
+
+Calendly supports passing color parameters. Replace lines 951-952 with JavaScript that detects the user's preference and loads the appropriate colors:
+
+```html
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" id="calendly-widget" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function() {
+    var widget = document.getElementById('calendly-widget');
+    var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (isDark) {
+        widget.setAttribute('data-url',
+            'https://calendly.com/motherlodebiz/website-booking?hide_event_type_details=1&background_color=252220&text_color=E8E6E1&primary_color=0299B3');
+    } else {
+        widget.setAttribute('data-url',
+            'https://calendly.com/motherlodebiz/website-booking?hide_event_type_details=1');
+    }
+})();
+</script>
+<!-- Calendly inline widget end -->
+```
+
+This checks the user's system preference BEFORE Calendly loads and sets the appropriate color parameters. The dark mode colors (252220, E8E6E1, 0299B3) match your site's dark palette.
+
+---
+
+## Summary of all changes:
+1. **"5-75" → "1-50"** in 4 locations (meta, og, twitter, schema)
+2. **"Chicago, IL" → "Bloomington, IN"** in schema address + footer
+3. **Fillout dark mode** — try iframe injection first, fall back to CSS filter (Option A is most reliable)
+4. **Calendly dark mode** — JavaScript color parameter swap based on prefers-color-scheme

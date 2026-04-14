@@ -1,0 +1,108 @@
+Please completely rebuild the events page with a new calendar-based layout. Replace the current card grid with this design:
+PAGE STRUCTURE
+Section 1: Featured Office Hours (Pinned at Top)
+Keep the existing featured Office Hours card at the top. This stays as-is - a highlighted card explaining what Office Hours is with the "Book Office Hours" button.
+Section 2: Interactive Calendar
+Replace the card grid with a monthly calendar view:
+Calendar Requirements:
+
+Standard monthly calendar grid (Sun-Sat columns)
+Month navigation arrows (<< Previous | Month Year | Next >>)
+IMPORTANT: Friday column should be wider than other columns (approximately 2x width) since all events fall on Fridays
+Other day columns can be narrower/minimal since they have no events
+Only allow navigation within 90 days from today (disable arrows beyond that range)
+Past dates should be grayed out
+
+Day Cell Design:
+
+Each day shows the date number
+Days WITH events show mini event blocks inside the cell
+Mini event blocks display:
+
+Event title (shortened: "Office Hours", "Loop'd In", "Napkin")
+Time (e.g., "9 AM", "11 AM", "1 PM")
+Color-coded background bar under the title based on event type
+
+
+
+Event Type Colors (for the color bar under title):
+
+Office Hours: #5372FF (cerulean)
+Facilitating (Loop'd In): #0299B3 (teal)
+Hosting (Napkin Networking): #F20358 (hot pink)
+
+Calendar Interaction:
+
+Clicking an event block in the calendar scrolls the page down to that event's detail card
+Smooth scroll animation
+Highlight the selected event card briefly when scrolled to
+
+Section 3: Event Details (Below Calendar)
+Single-column stack of event cards:
+Card Design:
+
+Each card has an ID matching its date for scroll targeting
+Shows: Title, Date, Time with timezone, Location, Description, Registration button
+Color accent (left border or top bar) matching event type color
+Cards are in chronological order
+Only show events within 90-day window
+
+Timezone Handling:
+
+Events with "convertTimezone": true should display time in viewer's local timezone
+Events with "convertTimezone": false (Napkin Networking) always show "CT" since it's in-person in Chicago
+Show the timezone abbreviation after the time (e.g., "11:00 AM EST" or "1:00 PM CT")
+
+MOBILE RESPONSIVE DESIGN
+On mobile (screens < 768px):
+
+Calendar switches to a week view OR a simple list view
+Maintain the color coding and tap-to-scroll functionality
+Event detail cards stack full-width
+
+TECHNICAL REQUIREMENTS
+
+90-Day Filter:
+
+Calculate 90 days from current date
+Only render events within that window
+Month navigation cannot go beyond months that have events in the 90-day window
+
+
+Timezone Conversion:
+
+Use JavaScript's Intl.DateTimeFormat to detect user's timezone
+Convert times for virtual events (convertTimezone: true)
+Keep CT timezone for in-person events (convertTimezone: false)
+
+
+Scroll Targeting:
+
+Each event card needs a unique ID (use the date: event-2026-01-09)
+Calendar click triggers smooth scroll to that ID
+Add a brief highlight animation when scrolled to
+
+
+Data Structure:
+
+The JSON has a featured object for the pinned Office Hours section
+The JSON has an events array with all individual events
+Each event has convertTimezone boolean to control timezone display
+
+
+
+BRAND SPECS (Keep Existing)
+
+Font: Inter
+Background: #F5F1E8 (cream)
+Text: #2B2B2B
+Cards: white with subtle shadow
+Buttons: #EBDBA3 (gold) with dark text
+
+SEO REQUIREMENTS (Keep Existing)
+
+Maintain Schema.org Event structured data
+Keep meta tags and Open Graph tags
+Semantic HTML structure
+
+The events-data.json file has been updated with the full 2026 calendar and the new data structure including the convertTimezone field.

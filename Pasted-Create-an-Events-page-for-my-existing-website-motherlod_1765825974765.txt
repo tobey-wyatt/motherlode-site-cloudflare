@@ -1,0 +1,50 @@
+Create an Events page for my existing website (motherlode.biz) that displays upcoming events I'm hosting, speaking at, or facilitating.
+
+REQUIREMENTS:
+
+1. PAGE STRUCTURE:
+- Create events.html that matches my existing site's header/footer/navigation
+- Create a separate events-data.json file where I can easily add/edit events without touching HTML
+- Use JavaScript to dynamically render events from the JSON file
+
+2. EVENTS DATA STRUCTURE (events-data.json):
+Each event needs these fields:
+- title (string)
+- date (YYYY-MM-DD format for sorting)
+- displayDate (human-readable, e.g., "January 15, 2026")
+- time (e.g., "12:00 PM CST")
+- type (one of: "Hosting", "Speaking", "Facilitating", "Office Hours")
+- location (string - venue name or "Virtual")
+- description (1-2 sentences)
+- registrationUrl (external link)
+- registrationLabel (optional, defaults to "Register" - but could be "Book Office Hours" or "RSVP")
+
+3. DISPLAY REQUIREMENTS:
+- Sort events by date (soonest first)
+- Automatically hide past events OR move them to a "Past Events" section
+- Visual badge/tag showing event type (Hosting/Speaking/Facilitating/Office Hours)
+- Clean card-based layout, responsive for mobile
+- Each card shows: title, date/time, type badge, location, description, registration button
+
+4. SEO REQUIREMENTS:
+- Proper semantic HTML (main, article, section tags)
+- Meta description and title tag
+- Schema.org Event structured data markup for each event
+- Open Graph tags for social sharing
+
+5. BRAND SPECS:
+- Font: Inter (Google Fonts) - weights 400, 500, 600, 700
+- Background: #F5F1E8 (cream)
+- Text: #2B2B2B (dark gray)
+- Accent colors for type badges:
+  - Hosting: #0299B3 (teal)
+  - Speaking: #5E18E8 (purple)
+  - Facilitating: #F20358 (hot pink)
+  - Office Hours: #5372FF (cerulean)
+- Buttons: #EBDBA3 (gold) with dark text
+- Cards: white (#FFFFFF) with subtle shadow
+
+6. START WITH SAMPLE DATA:
+Include 3-4 placeholder events in the JSON so I can see the layout working, then I'll replace with real data.
+
+Do not use any external frameworks beyond what my site already uses. Keep it simple - vanilla JavaScript is fine.
