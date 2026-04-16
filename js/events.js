@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     Promise.all([
         fetch('events-data.json').then(r => r.json()),
-        fetch('/api/external-events').then(r => r.json()).catch(() => ({ events: [] }))
+        fetch('https://motherlode-events-api.tools-ac5.workers.dev/api/external-events').then(r => r.json()).catch(() => ({ events: [] }))
     ])
         .then(([motherlodeData, externalData]) => {
             if (motherlodeData.featured && featuredContainer) {
